@@ -101,8 +101,12 @@
   if (!reduce) {
     const turb = $("#boil feTurbulence");
     let seed = 1;
+    // il tremolio gira solo quando un disegno che lo usa è sullo schermo
+    let boilVisible = 0;
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => (boilVisible += e.isIntersecting ? 1 : -1)));
+    $$(".boil, .sticker").forEach((el) => io.observe(el));
     setInterval(() => {
-      if (document.hidden) return;
+      if (document.hidden || boilVisible <= 0) return;
       seed = (seed % 3) + 1;
       turb.setAttribute("seed", seed);
     }, 160);
@@ -439,13 +443,27 @@
   const mmZoom = gsap.matchMedia();
   mmZoom.add({ desk: "(min-width: 701px)", mob: "(max-width: 700px)" }, (ctx) => {
     const { mob } = ctx.conditions;
-    const scales = mob ? [2, 4, 4, 4, 4, 4, 4] : [4, 5, 6, 5, 6, 8, 9];
-    const zt = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: ".zoom", start: "top top", end: "bottom bottom", scrub: 1 } });
-    $$(".zoom__el").forEach((el, i) => zt.to(el, { scale: scales[i], duration: 1 }, 0));
-    zt.to(".zoom__el:nth-child(1) .zoom__img img", { scale: 1.08, duration: 1 }, 0)
+    // si scala solo il riquadro della foto (non un livello a tutto schermo):
+    // l'origine è il centro dello schermo, così l'effetto resta identico ma molto più leggero
+    const scales = mob ? [1, 4, 4, 4, 4, 4, 4] : [1, 5, 6, 5, 6, 8, 9];
+    const boxes = $$(".zoom__img");
+    const sticky = $(".zoom__sticky");
+    const origin = (el) => {
+      const s = sticky.getBoundingClientRect();
+      const t = gsap.getProperty(el, "scale");
+      gsap.set(el, { scale: 1 });
+      const r = el.getBoundingClientRect();
+      gsap.set(el, { scale: t });
+      return `${s.left + s.width / 2 - r.left}px ${s.top + s.height / 2 - r.top}px`;
+    };
+    const zt = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: ".zoom", start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true } });
+    boxes.forEach((el, i) => {
+      if (i === 0) zt.fromTo(el, { scale: mob ? 0.5 : 0.25 }, { scale: 1, duration: 1 }, 0);
+      else zt.fromTo(el, { scale: 1, transformOrigin: () => origin(el) }, { scale: scales[i], duration: 1 }, 0);
+    });
+    zt.to(boxes.slice(1), { autoAlpha: 0, duration: 0.15 }, 0.62)
       .to(".zoom__over", { opacity: 1, duration: 0.3 }, 0.72)
       .from(".zoom__title", { yPercent: 40, duration: 0.3 }, 0.72);
-    if (mob) zt.to(".zoom__el:nth-child(1) .zoom__img", { height: "50vh", duration: 1 }, 0);
   });
 
   const stayText = $(".js-lines");
@@ -460,10 +478,22 @@
   let rw;
   addEventListener("resize", () => { clearTimeout(rw); rw = setTimeout(() => { stayText.textContent = stayText.getAttribute("aria-label"); buildStay(); }, 250); });
 
-  $$(".stay__ph").forEach((ph) => {
-    gsap.from(ph, { y: 120, rotate: gsap.utils.random(-4, 4), opacity: 0, duration: 1.3, ease: "power4.out", scrollTrigger: { trigger: ph, start: "top 92%" } });
-    gsap.fromTo($("img", ph), { yPercent: -20 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ph, start: "top bottom", end: "bottom top", scrub: true } });
-  });
+  // alloggio: elenco ambienti + cornice che cambia foto
+  const roomItems = $$(".rooms__item"), roomImgs = $$(".rooms__frame img"), roomNum = $(".js-room");
+  let roomCur = 0;
+  const setRoom = (i) => {
+    if (i === roomCur) return;
+    roomImgs.forEach((im) => im.classList.remove("was-active"));
+    roomImgs[roomCur].classList.add("was-active");
+    roomImgs[roomCur].classList.remove("is-active");
+    roomItems[roomCur].classList.remove("is-active");
+    roomCur = i;
+    roomImgs[i].classList.add("is-active");
+    roomItems[i].classList.add("is-active");
+    roomNum.textContent = i + 1;
+  };
+  roomItems.forEach((it, i) => ScrollTrigger.create({ trigger: it, start: "top 55%", end: "bottom 55%", onToggle: (self) => self.isActive && setRoom(i) }));
+  gsap.from(".rooms__frame", { "--r": 0, scale: 0.85, opacity: 0, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: ".rooms", start: "top 80%" } });
 
   /* ---------------- CHI SIAMO: polaroid a ventaglio ---------------- */
   const mmTeam = gsap.matchMedia();

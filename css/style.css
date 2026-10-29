@@ -430,20 +430,30 @@ body::before {
 .stay__text .line { display: block; overflow: hidden; }
 .stay__text .line > span { display: block; }
 .stay__side { display: grid; gap: 1.6rem; justify-items: start; }
-.rooms { display: grid; grid-template-columns: 1fr 1.15fr; gap: 6vw; margin-top: 14vh; }
-.rooms__list { list-style: none; }
-.rooms__item { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; border-top: 2.5px solid rgba(74,26,14,.18); opacity: .28; transition: opacity .5s var(--ease); }
-.rooms__item:last-child { border-bottom: 2.5px solid rgba(74,26,14,.18); }
-.rooms__item.is-active { opacity: 1; }
-.rooms__item h3 { font-size: clamp(2.4rem, 5vw, 5rem); font-weight: 700; text-transform: uppercase; line-height: .9; letter-spacing: -.03em; padding-top: .1em; transition: transform .6s var(--ease); }
-.rooms__item.is-active h3 { transform: translateX(.3em); }
-.rooms__item p { margin-top: 1rem; max-width: 30ch; font-size: clamp(1rem, .95rem + .3vw, 1.25rem); }
-.rooms__stage { position: sticky; top: 14vh; height: 76vh; align-self: start; }
-.rooms__frame { position: relative; height: 100%; border: 3px solid var(--ink); border-radius: 999px 999px 28px 28px; overflow: hidden; background: var(--ink); box-shadow: 12px 12px 0 var(--ink); }
-.rooms__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(100% 0 0 0); transform: scale(1.12); transition: clip-path 1s var(--ease), transform 1.4s var(--ease); }
-.rooms__frame img.is-active { clip-path: inset(0 0 0 0); transform: scale(1); z-index: 2; }
-.rooms__frame img.was-active { clip-path: inset(0 0 0 0); z-index: 1; }
-.rooms__count { position: absolute; right: -1rem; top: 2rem; z-index: 3; background: var(--sun); color: var(--ink); border: 2.5px solid var(--ink); border-radius: 999px; padding: .5em 1em .35em; font-weight: 700; letter-spacing: .1em; box-shadow: 3px 3px 0 var(--ink); }
+.rooms { margin-top: 14vh; }
+.rooms__head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.4rem; }
+.rooms__title { font-size: clamp(2.2rem, 4.6vw, 4.4rem); font-weight: 700; text-transform: uppercase; line-height: .9; letter-spacing: -.03em; padding-top: .1em; }
+.rooms__title .hand { display: block; text-transform: none; font-weight: 400; letter-spacing: 0; color: var(--brand-olive); font-size: .8em; line-height: 1.1; }
+.rooms__nav { display: flex; gap: .7rem; flex-shrink: 0; }
+.rooms__btn { width: 56px; height: 56px; border-radius: 50%; border: 2.5px solid var(--ink); background: var(--paper); color: var(--ink); font-size: 1.3rem; font-weight: 700; box-shadow: 3px 3px 0 var(--ink); transition: background .3s, transform .25s var(--bounce), box-shadow .25s var(--bounce), opacity .3s; }
+.rooms__btn:hover { background: var(--sun); transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+.rooms__btn:disabled { opacity: .35; pointer-events: none; }
+.rooms__track {
+  display: flex; gap: clamp(1rem, 2.4vw, 2.2rem);
+  margin: 0 calc(var(--gut) * -1); padding: 0 var(--gut) 2rem;
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gut);
+  scrollbar-width: none; cursor: grab; outline: none;
+}
+.rooms__track::-webkit-scrollbar { display: none; }
+.rooms__track.is-drag { cursor: grabbing; scroll-snap-type: none; }
+.rooms__track.is-drag .room { pointer-events: none; }
+.room { flex: 0 0 clamp(250px, 29vw, 430px); scroll-snap-align: start; user-select: none; }
+.room__img { aspect-ratio: 4 / 5; overflow: hidden; border: 3px solid var(--ink); border-radius: 22px; box-shadow: 8px 8px 0 var(--ink); background: var(--ink); }
+.room__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+.room:hover .room__img img { transform: scale(1.05); }
+.room figcaption { padding: 1.3rem .2rem 0; }
+.room h3 { font-size: clamp(1.4rem, 2vw, 1.9rem); font-weight: 700; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; padding-top: .1em; }
+.room p { margin-top: .5rem; font-size: 1rem; max-width: 32ch; }
 
 /* =========================================================
    CHI SIAMO
@@ -570,10 +580,8 @@ body::before {
   .zoom__el:nth-child(5) .zoom__img { top: 28vh; left: 8vw; }
   .zoom__el:nth-child(6) .zoom__img { top: 26vh; left: -36vw; }
   .zoom__el:nth-child(7) .zoom__img { top: -32vh; left: -30vw; }
-  .rooms { grid-template-columns: 1fr; gap: 0; }
-  .rooms__stage { order: -1; top: 12vh; height: 52vh; z-index: 2; }
-  .rooms__item { min-height: 48vh; }
-  .rooms__count { right: .6rem; }
+  .room { flex-basis: 78vw; }
+  .rooms__btn { width: 46px; height: 46px; }
   .team__deck { height: auto; display: grid; gap: 3rem; justify-items: center; }
   .polaroid { position: relative; left: auto; top: auto; margin: 0; width: min(340px, 86vw); }
   .footer__cols { grid-template-columns: 1fr; }

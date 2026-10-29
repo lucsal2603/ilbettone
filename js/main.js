@@ -478,22 +478,10 @@
   let rw;
   addEventListener("resize", () => { clearTimeout(rw); rw = setTimeout(() => { stayText.textContent = stayText.getAttribute("aria-label"); buildStay(); }, 250); });
 
-  // alloggio: elenco ambienti + cornice che cambia foto
-  const roomItems = $$(".rooms__item"), roomImgs = $$(".rooms__frame img"), roomNum = $(".js-room");
-  let roomCur = 0;
-  const setRoom = (i) => {
-    if (i === roomCur) return;
-    roomImgs.forEach((im) => im.classList.remove("was-active"));
-    roomImgs[roomCur].classList.add("was-active");
-    roomImgs[roomCur].classList.remove("is-active");
-    roomItems[roomCur].classList.remove("is-active");
-    roomCur = i;
-    roomImgs[i].classList.add("is-active");
-    roomItems[i].classList.add("is-active");
-    roomNum.textContent = i + 1;
-  };
-  roomItems.forEach((it, i) => ScrollTrigger.create({ trigger: it, start: "top 55%", end: "bottom 55%", onToggle: (self) => self.isActive && setRoom(i) }));
-  gsap.from(".rooms__frame", { "--r": 0, scale: 0.85, opacity: 0, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: ".rooms", start: "top 80%" } });
+  gsap.from(".room", {
+    y: 80, opacity: 0, duration: 1.1, ease: "power3.out", stagger: 0.1,
+    scrollTrigger: { trigger: ".rooms__track", start: "top 85%" },
+  });
 
   /* ---------------- CHI SIAMO: polaroid a ventaglio ---------------- */
   const mmTeam = gsap.matchMedia();
@@ -561,3 +549,47 @@
     }
   });
 })();
+
+/* ---------------- GALLERIA SPAZI: frecce e trascinamento ---------------- */
+(() => {
+  const track = document.querySelector(".rooms__track");
+  if (!track) return;
+  const btns = document.querySelectorAll(".rooms__btn");
+  const step = () => {
+    const card = track.querySelector(".room");
+    return card.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
+  };
+  const update = () => {
+    btns[0].disabled = track.scrollLeft <= 4;
+    btns[1].disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+  };
+  btns.forEach((b) => b.addEventListener("click", () => track.scrollBy({ left: step() * +b.dataset.dir, behavior: "smooth" })));
+  track.addEventListener("scroll", update, { passive: true });
+  addEventListener("resize", update);
+  update();
+
+  let down = false, startX = 0, startLeft = 0, moved = false;
+  track.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
+    down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+  });
+  addEventListener("pointermove", (e) => {
+    if (!down) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) { moved = true; track.classList.add("is-drag"); }
+    track.scrollLeft = startLeft - dx;
+  });
+  addEventListener("pointerup", () => {
+    if (!down) return;
+    down = false;
+    if (moved) {
+      // riaggancia alla scheda più vicina
+      const left = track.scrollLeft;
+      track.classList.remove("is-drag");
+      track.scrollLeft = left;
+      const s = step();
+      track.scrollTo({ left: Math.round(left / s) * s, behavior: "smooth" });
+    }
+  });
+})();
+

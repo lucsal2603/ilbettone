@@ -458,24 +458,38 @@
     </div>
   </div>
   <div class="rooms">
-    <ol class="rooms__list">
-      <li class="rooms__item is-active" data-i="0"><h3>Le camere</h3><p>Letti in legno antico, pavimenti in legno e muri in pietra.</p></li>
-      <li class="rooms__item" data-i="1"><h3>Il bagno</h3><p>Pietra a vista e una finestra aperta sul verde.</p></li>
-      <li class="rooms__item" data-i="2"><h3>La cucina</h3><p>Travi in legno, pietra e una grande tavola rotonda.</p></li>
-      <li class="rooms__item" data-i="3"><h3>Il soggiorno</h3><p>Il pianoforte, la scala e la luce che entra dalla porta.</p></li>
-      <li class="rooms__item" data-i="4"><h3>Il prato della villa</h3><p>All'ombra dei grandi alberi, davanti alla villa.</p></li>
-      <li class="rooms__item" data-i="5"><h3>La vista</h3><p>I Colli Euganei tutto intorno.</p></li>
-    </ol>
-    <div class="rooms__stage">
-      <div class="rooms__frame">
-        <img class="is-active" src="assets/img/alloggio-06.webp" alt="Una camera con il letto in legno" loading="lazy">
-        <img src="assets/img/alloggio-04.webp" alt="Il bagno con i muri in pietra" loading="lazy">
-        <img src="assets/img/alloggio-13.webp" alt="La cucina con i muri in pietra" loading="lazy">
-        <img src="assets/img/alloggio-14.webp" alt="Il soggiorno con il pianoforte e la scala" loading="lazy">
-        <img src="assets/img/yoga.webp" alt="Il prato della villa" loading="lazy">
-        <img src="assets/img/panorama.webp" alt="Panorama sui Colli Euganei" loading="lazy">
+    <div class="rooms__head">
+      <h3 class="rooms__title">Gli spazi <em class="hand">della villa</em></h3>
+      <div class="rooms__nav">
+        <button class="rooms__btn" data-dir="-1" aria-label="Foto precedente" data-magnetic>←</button>
+        <button class="rooms__btn" data-dir="1" aria-label="Foto successiva" data-magnetic>→</button>
       </div>
-      <p class="rooms__count"><span class="js-room">1</span> / 6</p>
+    </div>
+    <div class="rooms__track" tabindex="0" aria-label="Galleria degli spazi della villa">
+      <figure class="room">
+        <div class="room__img"><img src="assets/img/alloggio-06.webp" alt="Una camera con il letto in legno" loading="lazy" draggable="false"></div>
+        <figcaption><h3>Le camere</h3><p>Letti in legno antico, pavimenti in legno e muri in pietra.</p></figcaption>
+      </figure>
+      <figure class="room">
+        <div class="room__img"><img src="assets/img/alloggio-04.webp" alt="Il bagno con i muri in pietra" loading="lazy" draggable="false"></div>
+        <figcaption><h3>Il bagno</h3><p>Pietra a vista e una finestra aperta sul verde.</p></figcaption>
+      </figure>
+      <figure class="room">
+        <div class="room__img"><img src="assets/img/alloggio-13.webp" alt="La cucina con i muri in pietra" loading="lazy" draggable="false"></div>
+        <figcaption><h3>La cucina</h3><p>Travi in legno, pietra e una grande tavola rotonda.</p></figcaption>
+      </figure>
+      <figure class="room">
+        <div class="room__img"><img src="assets/img/alloggio-14.webp" alt="Il soggiorno con il pianoforte e la scala" loading="lazy" draggable="false"></div>
+        <figcaption><h3>Il soggiorno</h3><p>Il pianoforte, la scala e la luce che entra dalla porta.</p></figcaption>
+      </figure>
+      <figure class="room">
+        <div class="room__img"><img src="assets/img/yoga.webp" alt="Il prato della villa" loading="lazy" draggable="false"></div>
+        <figcaption><h3>Il prato</h3><p>All'ombra dei grandi alberi, davanti alla villa.</p></figcaption>
+      </figure>
+      <figure class="room">
+        <div class="room__img"><img src="assets/img/panorama.webp" alt="Panorama sui Colli Euganei" loading="lazy" draggable="false"></div>
+        <figcaption><h3>La vista</h3><p>I Colli Euganei tutto intorno.</p></figcaption>
+      </figure>
     </div>
   </div>
 </section>

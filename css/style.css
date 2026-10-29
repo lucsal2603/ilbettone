@@ -150,12 +150,11 @@ body::before {
 }
 .header.is-scrolled { padding-block: .8rem; }
 /* niente barra: logo e icona hanno una capsula propria, come il menu */
-.header__logo { padding: .55em .9em .4em; border-radius: 999px; transition: background .4s, box-shadow .4s; }
+.header__logo { display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 1.1rem; border-radius: 999px; line-height: 0; transition: background .4s, box-shadow .4s; }
 .header.is-scrolled .header__logo { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 0 0 2px currentColor; }
 .header.is-scrolled .header__ig { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .header.on-video:not(.is-scrolled) { color: var(--cream); }
 .header.on-video:not(.is-scrolled) .header__nav { background: rgba(74,26,14,.28); }
-.header__logo { font-weight: 700; font-size: clamp(1.25rem, 1rem + 1vw, 1.9rem); letter-spacing: .02em; line-height: 1; padding-top: .15em; }
 .header__logo b { font-weight: 700; }
 /* logo originale del Bettone (vettoriale), colorato con currentColor */
 .logo-mark { display: block; width: clamp(118px, 10.5vw, 168px); aspect-ratio: 3200 / 520; background: currentColor;

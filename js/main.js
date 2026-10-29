@@ -490,12 +490,6 @@
     scrollTrigger: { trigger: ".panels", start: "top 85%" },
   });
 
-  /* ---------------- CHI SIAMO → CONTATTI: la sezione si ferma e "Vieni a trovarci" sale sopra ---------------- */
-  ScrollTrigger.create({ trigger: ".team", start: "bottom bottom", endTrigger: ".contact", end: "top top", pin: true, pinSpacing: false });
-  gsap.timeline({ scrollTrigger: { trigger: ".contact", start: "top bottom", end: "top top", scrub: true } })
-    .to(".team", { "--dim": 0.45, ease: "none" }, 0)
-    .to(".team__head, .team__deck", { scale: 0.9, yPercent: -4, transformOrigin: "50% 100%", ease: "none" }, 0);
-
   /* ---------------- CHI SIAMO: polaroid a ventaglio ---------------- */
   const mmTeam = gsap.matchMedia();
   mmTeam.add("(min-width: 701px)", () => {
@@ -521,8 +515,8 @@
   gsap.from(".form", { y: 120, rotate: 6, opacity: 0, duration: 1.3, ease: "back.out(1.4)", scrollTrigger: { trigger: ".form", start: "top 90%" } });
 
   /* ---------------- FOOTER ---------------- */
-  gsap.from(".footer__big span", {
-    yPercent: 100, rotate: (i) => (i % 2 ? 10 : -10), ease: "back.out(1.6)", stagger: 0.04,
+  gsap.from(".footer__big .logo-mark", {
+    yPercent: 105, ease: "power3.out",
     scrollTrigger: { trigger: ".footer__big", start: "top bottom", end: "bottom bottom", scrub: 1 },
   });
   // gli animali salgono da dietro il bordo dritto del footer

@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/poster.webp">
+<link rel="preload" as="image" href="assets/img/logo-bettone.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-loading">
@@ -34,7 +35,7 @@
       <path d="M4 110 C 40 110 50 60 90 58 C 128 56 130 96 160 96 C 190 96 196 20 236 18 C 276 16 282 84 312 86 C 340 88 350 64 372 64 C 388 64 394 80 396 110" />
       <circle cx="320" cy="30" r="12"/>
     </svg>
-    <p class="loader__word">Il Bettone</p>
+    <div class="loader__word"><img src="assets/img/logo-bettone.svg" alt="Il Bettone"></div>
     <p class="loader__count"><span class="js-count">0</span><small>%</small></p>
   </div>
 </div>
@@ -50,7 +51,7 @@
 
 <!-- ============ HEADER ============ -->
 <header class="header on-video">
-  <a href="#top" class="header__logo" data-magnetic aria-label="Il Bettone, torna all'inizio">IL<b>BETTONE</b></a>
+  <a href="#top" class="header__logo" data-magnetic aria-label="Il Bettone, torna all'inizio"><span class="logo-mark"></span></a>
   <nav class="header__nav" aria-label="Principale">
     <a href="#fattoria" class="roll"><span data-t="Fattoria">Fattoria</span></a>
     <a href="#spuntini" class="roll"><span data-t="Spuntini">Spuntini</span></a>
@@ -585,7 +586,7 @@
         <img src="assets/img/veneto.png" alt="Veneto — The Land of Venice" loading="lazy">
       </div>
     </div>
-    <p class="footer__big" aria-hidden="true"><span>I</span><span>L</span><span>B</span><span>E</span><span>T</span><span>T</span><span>O</span><span>N</span><span>E</span></p>
+    <div class="footer__big" aria-hidden="true"><span class="logo-mark"></span></div>
     <div class="footer__bar">
       <p>© <span class="js-year">2026</span> Il Bettone · in partnership con Gate 11</p>
       <p><a href="https://www.ilbettone.com/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></p>

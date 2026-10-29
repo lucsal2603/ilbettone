@@ -114,7 +114,7 @@
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
     tl.fromTo(".hero__media", { scale: 1.25 }, { scale: 1, duration: 2.2, ease: "power3.out" }, 0)
       .from(".hero__ground", { yPercent: 100, duration: 1.4 }, 0.2)
-      .from(".hero__deco > *", { y: 80, opacity: 0, rotate: -15, duration: 1.1, ease: "back.out(2)", stagger: 0.08 }, 0.6)
+      .from(".hero__deco > *", { y: 60, opacity: 0, duration: 1.2, ease: "power3.out", stagger: 0.1 }, 0.6)
       .from(".hl", { yPercent: -160, rotate: () => gsap.utils.random(-25, 25), opacity: 0, duration: 1.2, ease: "bounce.out", stagger: 0.06 }, 0.35)
       .from(".hero__kicker span", { y: 30, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.9)
       .from(".hero__place", { scale: 0, rotate: -10, duration: 0.8, ease: "back.out(2.5)" }, 1.1)
@@ -165,9 +165,15 @@
   if (fine && !reduce) {
     root.classList.add("has-cursor");
     const dot = $(".cursor__dot"), ring = $(".cursor__ring"), label = $(".cursor__label");
-    const dx = gsap.quickTo(dot, "x", { duration: 0.08 }), dy = gsap.quickTo(dot, "y", { duration: 0.08 });
+    const dx = gsap.quickTo(dot, "x", { duration: 0.12 }), dy = gsap.quickTo(dot, "y", { duration: 0.12 });
     const rx = gsap.quickTo(ring, "x", { duration: 0.45, ease: "power3" }), ry = gsap.quickTo(ring, "y", { duration: 0.45, ease: "power3" });
-    addEventListener("mousemove", (e) => { dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); });
+    const flower = $(".cursor__flower");
+    let lastX = 0, spin = 0;
+    addEventListener("mousemove", (e) => {
+      dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
+      spin += (e.clientX - lastX) * 1.2; lastX = e.clientX;
+      gsap.to(flower, { rotate: spin, duration: 0.6, ease: "power2.out", overwrite: true });
+    });
     document.addEventListener("mouseover", (e) => {
       const lab = e.target.closest("[data-cursor]");
       const link = e.target.closest("a, button, label, .hl");

@@ -5,345 +5,655 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Il Bettone — Fattoria, Alloggio, Spuntini · Colli Euganei</title>
 <meta name="description" content="Il Bettone: otto ettari nel Parco dei Colli Euganei a Teolo (PD). Fattoria didattica, alloggio in una villa del '700, spuntini con i prodotti della fattoria.">
-<link rel="icon" href="https://www.ilbettone.com/wp-content/uploads/2023/02/favicon.jpg">
+<meta name="theme-color" content="#f7f1e1">
+<meta property="og:title" content="Il Bettone — Fattoria, Alloggio, Spuntini">
+<meta property="og:description" content="Otto ettari di terra nel Parco dei Colli Euganei. Animali liberi, una villa del '700, i prodotti della fattoria.">
+<meta property="og:image" content="assets/img/villa.webp">
+<link rel="icon" href="assets/img/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/poster.webp">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-loading">
 
-<!-- PRELOADER -->
-<div class="preloader" aria-hidden="true">
-  <div class="preloader__inner">
-    <div class="preloader__word"><span>Il</span> <span>Bettone</span></div>
-    <div class="preloader__count"><span class="js-count">0</span>%</div>
+<!-- Filtro "linea che trema" stile cartone animato -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="boil" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<!-- ============ PRELOADER ============ -->
+<div class="loader" aria-hidden="true">
+  <svg class="loader__bg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 L100 0 L100 100 Q50 100 0 100 Z"/></svg>
+  <div class="loader__inner">
+    <svg class="loader__hills" viewBox="0 0 400 120" fill="none">
+      <path d="M4 110 C 40 110 50 60 90 58 C 128 56 130 96 160 96 C 190 96 196 20 236 18 C 276 16 282 84 312 86 C 340 88 350 64 372 64 C 388 64 394 80 396 110" />
+      <circle cx="320" cy="30" r="12"/>
+    </svg>
+    <p class="loader__word">Il Bettone</p>
+    <p class="loader__count"><span class="js-count">0</span><small>%</small></p>
   </div>
-  <div class="preloader__bar"><i></i></div>
-  <div class="preloader__panel preloader__panel--1"></div>
-  <div class="preloader__panel preloader__panel--2"></div>
 </div>
 
-<!-- CURSOR -->
-<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label"></span></div></div>
+<!-- ============ CURSOR ============ -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"><span class="cursor__label"></span></div>
+</div>
 <div class="progress" aria-hidden="true"><i></i></div>
 
-<!-- HEADER -->
+<!-- ============ HEADER ============ -->
 <header class="header">
-  <a href="#top" class="header__logo" data-magnetic>Il&nbsp;Bettone</a>
-  <nav class="header__nav">
-    <a href="#fattoria" data-hover>Fattoria</a>
-    <a href="#spuntini" data-hover>Spuntini</a>
-    <a href="#alloggio" data-hover>Alloggio</a>
-    <a href="#chi-siamo" data-hover>Chi siamo</a>
+  <a href="#top" class="header__logo" data-magnetic aria-label="Il Bettone, torna all'inizio">IL<b>BETTONE</b></a>
+  <nav class="header__nav" aria-label="Principale">
+    <a href="#fattoria" class="roll"><span data-t="Fattoria">Fattoria</span></a>
+    <a href="#spuntini" class="roll"><span data-t="Spuntini">Spuntini</span></a>
+    <a href="#alloggio" class="roll"><span data-t="Alloggio">Alloggio</span></a>
+    <a href="#chi-siamo" class="roll"><span data-t="Chi siamo">Chi siamo</span></a>
   </nav>
   <div class="header__right">
-    <a href="#contatti" class="btn btn--small" data-magnetic><span>Prenota</span></a>
-    <button class="burger" aria-label="Apri menu" data-magnetic><span></span><span></span></button>
+    <a href="https://www.instagram.com/ilbettone/" target="_blank" rel="noopener" class="header__ig" aria-label="Instagram" data-magnetic>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+    </a>
+    <a href="#contatti" class="btn btn--sun header__cta" data-magnetic>Contatti</a>
+    <button class="burger" aria-label="Apri il menu" aria-expanded="false" data-magnetic><i></i><i></i></button>
   </div>
 </header>
 
-<!-- MENU OVERLAY -->
+<!-- ============ MENU OVERLAY ============ -->
 <div class="menu" aria-hidden="true">
-  <div class="menu__bg"></div>
-  <nav class="menu__links">
-    <a href="#fattoria"><em>01</em><span>Fattoria</span></a>
-    <a href="#spuntini"><em>02</em><span>Spuntini</span></a>
-    <a href="#alloggio"><em>03</em><span>Alloggio</span></a>
-    <a href="#chi-siamo"><em>04</em><span>Chi siamo</span></a>
-    <a href="#contatti"><em>05</em><span>Contatti</span></a>
-  </nav>
-  <div class="menu__foot">
-    <a href="tel:+393402680393">340 268 0393</a>
-    <a href="mailto:info@ilbettone.com">info@ilbettone.com</a>
-    <a href="https://www.instagram.com/ilbettone/" target="_blank" rel="noopener">Instagram</a>
+  <div class="menu__inner">
+    <nav class="menu__links">
+      <a href="#fattoria" data-img="assets/img/pecore.webp"><small>01</small><span>Fattoria</span></a>
+      <a href="#spuntini" data-img="assets/img/tagliatelle.webp"><small>02</small><span>Spuntini</span></a>
+      <a href="#alloggio" data-img="assets/img/villa.webp"><small>03</small><span>Alloggio</span></a>
+      <a href="#chi-siamo" data-img="assets/img/orto.webp"><small>04</small><span>Chi siamo</span></a>
+      <a href="#contatti" data-img="assets/img/albero.webp"><small>05</small><span>Contatti</span></a>
+    </nav>
+    <div class="menu__side">
+      <p class="hand">vieni a trovarci</p>
+      <p>Via Bettone 17<br>35037 Teolo (PD)</p>
+      <p><a href="mailto:info@ilbettone.com">info@ilbettone.com</a><br><a href="tel:+393402680393">340 268 0393</a></p>
+    </div>
   </div>
+  <div class="menu__preview" aria-hidden="true"><img alt=""></div>
 </div>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero" data-bg="cream">
-    <div class="hero__top">
-      <p class="hero__kicker js-fade">Teolo · Parco dei Colli Euganei</p>
-      <h1 class="hero__title">
-        <span class="line js-split-chars">Il Bettone</span>
-      </h1>
-      <div class="hero__row">
-        <p class="hero__sub js-fade">Fattoria didattica, alloggio in una villa del&nbsp;'700 e spuntini con quello che nasce qui.</p>
-        <div class="hero__scroll js-fade"><span>Scorri</span><i></i></div>
-      </div>
-    </div>
-    <div class="hero__media">
-      <div class="hero__frame">
-        <img src="https://images.unsplash.com/photo-1644478535310-bc6701f373c8?auto=format&fit=crop&w=2200&q=80" alt="Colli Euganei" class="hero__img">
-      </div>
-      <div class="hero__badge">
-        <svg viewBox="0 0 200 200" class="rotating">
-          <defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-          <text><textPath href="#circ">fattoria · alloggio · spuntini · colli euganei · </textPath></text>
-        </svg>
-        <span class="hero__badge-c">✺</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <section class="marquee" data-bg="cream" aria-hidden="true">
-    <div class="marquee__track">
-      <div class="marquee__item">Fattoria didattica <i>✺</i> Villa del '700 <i>✺</i> Animali liberi <i>✺</i> Spuntini nella vecchia chiesa <i>✺</i> Settimane verdi <i>✺</i>&nbsp;</div>
-      <div class="marquee__item">Fattoria didattica <i>✺</i> Villa del '700 <i>✺</i> Animali liberi <i>✺</i> Spuntini nella vecchia chiesa <i>✺</i> Settimane verdi <i>✺</i>&nbsp;</div>
-    </div>
-  </section>
-
-  <!-- INTRO -->
-  <section class="intro" data-bg="cream">
-    <div class="intro__label js-fade">(Il luogo)</div>
-    <p class="intro__text js-words">Otto ettari di terra nel Parco dei Colli Euganei, dove abbiamo scelto di creare una fattoria in cui gli animali vivono liberi, in mezzo alla natura. Qui il tempo segue le stagioni, la colazione nasce nell'orto e i bambini imparano da dove arriva quello che mangiano.</p>
-    <div class="stats">
-      <div class="stat"><div class="stat__n"><span class="js-counter" data-to="8">0</span></div><div class="stat__l">ettari di natura</div></div>
-      <div class="stat"><div class="stat__n"><span class="js-counter" data-to="700" data-prefix="'">0</span></div><div class="stat__l">la villa, restaurata</div></div>
-      <div class="stat"><div class="stat__n"><span class="js-counter" data-to="5">0</span></div><div class="stat__l">specie di animali</div></div>
-      <div class="stat"><div class="stat__n"><span class="js-counter" data-to="2">0</span></div><div class="stat__l">gatti (sempre al sole)</div></div>
-    </div>
-  </section>
-
-  <!-- FATTORIA -->
-  <section class="fattoria" id="fattoria" data-bg="cream">
-    <div class="section-head">
-      <span class="section-head__n js-fade">01</span>
-      <h2 class="section-head__t"><span class="line js-split-lines">La fattoria</span></h2>
-    </div>
-    <div class="split">
-      <div class="split__media reveal">
-        <img data-speed="0.85" src="https://images.unsplash.com/photo-1753788132110-f7ef23aec35c?auto=format&fit=crop&w=1400&q=80" alt="Mucche al pascolo">
-      </div>
-      <div class="split__text">
-        <p class="lead js-lines">Mucche, pecore, maiali neri, galline, galli, capponi e due gatti. Ognuno con il suo spazio, ognuno libero.</p>
-        <p class="body js-fade">Siamo una <strong>fattoria didattica riconosciuta dalla Regione Veneto</strong>. Accogliamo scuole e famiglie per visite guidate tra stalle, prati e orto: per toccare con mano, sporcarsi le scarpe e tornare a casa con qualcosa in più.</p>
-        <a href="#contatti" class="link-arrow" data-hover><span>Prenota una visita</span><i>→</i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- HORIZONTAL ANIMALS -->
-  <section class="hscroll" data-bg="green" aria-label="Gli abitanti della fattoria">
-    <div class="hscroll__pin">
-      <div class="hscroll__track">
-        <div class="hcard hcard--intro">
-          <span class="hcard__k">(Gli abitanti)</span>
-          <h3>Chi vive<br><em>al Bettone</em></h3>
-          <p>Scorri e fai conoscenza.</p>
-        </div>
-        <article class="hcard">
-          <div class="hcard__img"><img src="https://images.unsplash.com/photo-1708769247791-cdd8d7e0d2ba?auto=format&fit=crop&w=1000&q=80" alt="Mucca"></div>
-          <div class="hcard__meta"><span>01</span><h4>Le mucche</h4></div>
-        </article>
-        <article class="hcard">
-          <div class="hcard__img"><img src="https://images.unsplash.com/photo-1767447612728-30dd863a8c9c?auto=format&fit=crop&w=1000&q=80" alt="Pecore"></div>
-          <div class="hcard__meta"><span>02</span><h4>Le pecore dell'Alpago</h4></div>
-        </article>
-        <article class="hcard hcard--type">
-          <div class="hcard__type"><span>Maiali<br><em>neri</em></span></div>
-          <div class="hcard__meta"><span>03</span><h4>I maiali neri</h4></div>
-        </article>
-        <article class="hcard">
-          <div class="hcard__img"><img src="https://images.unsplash.com/photo-1556316918-880f9e893822?auto=format&fit=crop&w=1000&q=80" alt="Galline"></div>
-          <div class="hcard__meta"><span>04</span><h4>Galline, galli e capponi</h4></div>
-        </article>
-        <article class="hcard">
-          <div class="hcard__img"><img src="https://images.unsplash.com/photo-1758994092682-dfc9e8bd4bb2?auto=format&fit=crop&w=1000&q=80" alt="Vitelli all'ombra"></div>
-          <div class="hcard__meta"><span>05</span><h4>Liberi, all'ombra</h4></div>
-        </article>
-        <article class="hcard hcard--type hcard--terra">
-          <div class="hcard__type"><span>Due<br><em>gatti</em></span></div>
-          <div class="hcard__meta"><span>06</span><h4>I padroni di casa</h4></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- STACK CARDS: DIDATTICA -->
-  <section class="stack" data-bg="cream">
-    <div class="section-head section-head--center">
-      <span class="section-head__n js-fade">Fattoria didattica</span>
-      <h2 class="section-head__t"><span class="line js-split-lines">Quando venire</span></h2>
-    </div>
-    <div class="stack__cards">
-      <div class="scard scard--1">
-        <div class="scard__n">I</div>
-        <div class="scard__body"><h3>Scuole &amp; famiglie</h3><p>Visite guidate per classi e famiglie, su prenotazione. Si conoscono gli animali, si lavora nell'orto, si scopre la vita di campagna.</p></div>
-        <div class="scard__img"><img src="https://images.unsplash.com/photo-1635774855717-0aec182f92cc?auto=format&fit=crop&w=1000&q=80" alt="Ortaggi dell'orto"></div>
-      </div>
-      <div class="scard scard--2">
-        <div class="scard__n">II</div>
-        <div class="scard__body"><h3>Vacanze scolastiche</h3><p>Aperti durante le vacanze di Natale, Carnevale e Pasqua: giornate in fattoria per i più piccoli.</p></div>
-        <div class="scard__img"><img src="https://images.unsplash.com/photo-1647963845752-be5d5642fe98?auto=format&fit=crop&w=1000&q=80" alt="Pecore sulla collina"></div>
-      </div>
-      <div class="scard scard--3">
-        <div class="scard__n">III</div>
-        <div class="scard__body"><h3>Settimane verdi</h3><p>Da giugno a settembre i centri estivi del Bettone: settimane all'aria aperta, tra animali, prati e laboratori.</p></div>
-        <div class="scard__img"><img src="https://images.unsplash.com/photo-1753788132110-f7ef23aec35c?auto=format&fit=crop&w=1000&q=80" alt="Pascolo"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPUNTINI -->
-  <section class="spuntini" id="spuntini" data-bg="terra">
-    <div class="zoom">
-      <div class="zoom__pin">
-        <div class="zoom__img"><img src="https://images.unsplash.com/photo-1707092009843-2b5a919d17b0?auto=format&fit=crop&w=2000&q=80" alt="Pane e marmellate"></div>
-        <div class="zoom__text">
-          <span class="section-head__n">02</span>
-          <h2><span class="zoom__w">Spuntini</span></h2>
-          <p>nella vecchia chiesa della villa</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="spuntini__content">
-      <div class="spuntini__intro">
-        <p class="lead js-lines">Una costruzione in sasso, un tempo la chiesa della Villa. Oggi è il posto dove assaggiare e portarsi a casa la fattoria.</p>
-        <div class="open-badge js-pop">
-          <span>Aperti a pranzo</span>
-          <strong>Sabato &amp; Domenica</strong>
-        </div>
-      </div>
-
-      <ul class="products" aria-label="Prodotti">
-        <li class="product" data-img="https://images.unsplash.com/photo-1635843125569-b7fb33d26fab?auto=format&fit=crop&w=700&q=80"><span class="product__n">01</span><span class="product__t">Uova</span><span class="product__d">delle nostre galline</span></li>
-        <li class="product" data-img="https://images.unsplash.com/photo-1635774855717-0aec182f92cc?auto=format&fit=crop&w=700&q=80"><span class="product__n">02</span><span class="product__t">Verdure</span><span class="product__d">dall'orto</span></li>
-        <li class="product" data-img="https://images.unsplash.com/photo-1752942158170-38cd41c574d6?auto=format&fit=crop&w=700&q=80"><span class="product__n">03</span><span class="product__t">Salumi</span><span class="product__d">della fattoria</span></li>
-        <li class="product" data-img="https://images.unsplash.com/photo-1707092009843-2b5a919d17b0?auto=format&fit=crop&w=700&q=80"><span class="product__n">04</span><span class="product__t">Marmellate</span><span class="product__d">e conserve di Irene</span></li>
-        <li class="product" data-img="https://images.unsplash.com/photo-1707092009843-2b5a919d17b0?auto=format&fit=crop&w=700&q=80"><span class="product__n">05</span><span class="product__t">Pane</span><span class="product__d">appena sfornato</span></li>
-        <li class="product" data-img="https://images.unsplash.com/photo-1644478535310-bc6701f373c8?auto=format&fit=crop&w=700&q=80"><span class="product__n">06</span><span class="product__t">Vino naturale</span><span class="product__d">da bere qui o da portare via</span></li>
-      </ul>
-      <div class="product-float" aria-hidden="true"><img alt=""></div>
-      <a href="#contatti" class="btn btn--light" data-magnetic><span>Prenota il pranzo</span></a>
-    </div>
-  </section>
-
-  <!-- ALLOGGIO -->
-  <section class="alloggio" id="alloggio" data-bg="cream">
-    <div class="section-head">
-      <span class="section-head__n js-fade">03</span>
-      <h2 class="section-head__t"><span class="line js-split-lines">L'alloggio</span></h2>
-    </div>
-    <div class="expand">
-      <div class="expand__pin">
-        <div class="expand__frame">
-          <img src="https://images.unsplash.com/photo-1650674728426-93c48dbdc872?auto=format&fit=crop&w=2200&q=80" alt="Villa del Settecento">
-          <div class="expand__caption"><span>Villa del</span><strong>'700</strong></div>
-        </div>
-      </div>
-    </div>
-    <div class="alloggio__grid">
-      <div class="alloggio__col">
-        <p class="lead js-lines">In una vecchia villa del '700, dopo un restauro conservativo, nasce il nostro alloggio.</p>
-        <p class="body js-fade">Per accogliere chi viene a trovarci con un momento di quiete e natura, nel magico Parco dei Colli Euganei. Soggiorni di relax e sano divertimento, con colazioni preparate con cibi secondo natura.</p>
-        <ul class="features">
-          <li class="js-fade"><i>✺</i>Restauro conservativo</li>
-          <li class="js-fade"><i>✺</i>Colazione con i prodotti della fattoria</li>
-          <li class="js-fade"><i>✺</i>Nel cuore del Parco Regionale</li>
-        </ul>
-        <a href="#contatti" class="link-arrow" data-hover><span>Chiedi disponibilità</span><i>→</i></a>
-      </div>
-      <div class="alloggio__media">
-        <div class="reveal reveal--tall"><img data-speed="0.8" src="https://images.unsplash.com/photo-1752942158170-38cd41c574d6?auto=format&fit=crop&w=1200&q=80" alt="Interno rustico"></div>
-        <div class="reveal reveal--small"><img data-speed="0.9" src="https://images.unsplash.com/photo-1635843125569-b7fb33d26fab?auto=format&fit=crop&w=800&q=80" alt="Uova fresche per colazione"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TERRITORIO -->
-  <section class="territorio" data-bg="green">
-    <div class="territorio__bg"><img src="https://images.unsplash.com/photo-1644478535310-bc6701f373c8?auto=format&fit=crop&w=2200&q=80" alt=""></div>
-    <svg class="hills-line" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,260 C120,240 160,120 260,130 C340,138 360,220 450,210 C540,200 560,60 680,70 C800,80 820,200 920,190 C1010,182 1040,110 1130,115 C1230,120 1260,230 1440,220"/>
+<!-- ============ HERO ============ -->
+<section class="hero" data-theme="cream" aria-label="Il Bettone">
+  <div class="hero__sticky">
+    <!-- cielo -->
+    <svg class="hero__layer hero__sky" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g class="sun" transform="translate(1260 210)">
+        <g class="sun__rays" stroke="#4a1a0e" stroke-width="5" stroke-linecap="round">
+          <path d="M0 -118 V-96"/><path d="M0 96 V118"/><path d="M-118 0 H-96"/><path d="M96 0 H118"/>
+          <path d="M-83 -83 L-68 -68"/><path d="M68 68 L83 83"/><path d="M-83 83 L-68 68"/><path d="M68 -68 L83 -83"/>
+        </g>
+        <circle r="74" fill="#f2b632" stroke="#4a1a0e" stroke-width="5"/>
+        <path d="M-26 -8 q8 -10 16 0 M10 -8 q8 -10 16 0" fill="none" stroke="#4a1a0e" stroke-width="5" stroke-linecap="round"/>
+        <path d="M-22 18 q22 22 44 0" fill="none" stroke="#4a1a0e" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="-40" cy="14" rx="10" ry="6" fill="#f08a5d" opacity=".7"/><ellipse cx="40" cy="14" rx="10" ry="6" fill="#f08a5d" opacity=".7"/>
+      </g>
+      <g fill="#fff" stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round">
+        <path class="cloud cloud--1" d="M180 210 a34 34 0 0 1 48 -32 a46 46 0 0 1 86 -2 a32 32 0 0 1 46 34 z"/>
+        <path class="cloud cloud--2" d="M640 140 a28 28 0 0 1 40 -26 a38 38 0 0 1 70 0 a26 26 0 0 1 36 26 z"/>
+        <path class="cloud cloud--3" d="M960 330 a30 30 0 0 1 42 -28 a42 42 0 0 1 78 -2 a28 28 0 0 1 40 30 z"/>
+      </g>
+      <g class="birds" fill="none" stroke="#4a1a0e" stroke-width="4" stroke-linecap="round">
+        <path d="M480 260 q12 -12 24 0 q12 -12 24 0"/><path d="M540 300 q9 -9 18 0 q9 -9 18 0"/>
+      </g>
     </svg>
-    <div class="territorio__inner">
-      <span class="section-head__n js-fade">Il territorio</span>
-      <h2 class="big-quote js-split-words">Colline nate da antichi vulcani, vigne, boschi e silenzio.</h2>
-      <p class="body js-fade">Il Bettone si trova a Teolo, nel Parco Regionale dei Colli Euganei, tra Padova e i Colli: vicino a tutto, lontano dal rumore.</p>
-    </div>
-  </section>
 
-  <!-- CHI SIAMO -->
-  <section class="team" id="chi-siamo" data-bg="cream">
-    <div class="section-head">
-      <span class="section-head__n js-fade">04</span>
-      <h2 class="section-head__t"><span class="line js-split-lines">Chi siamo</span></h2>
-    </div>
-    <div class="team__grid">
-      <article class="member" data-tilt>
-        <div class="member__img reveal"><img src="https://www.ilbettone.com/wp-content/uploads/2023/08/Federica.jpg" alt="Federica"></div>
-        <h3>Federica</h3>
-        <p>Socia. Si occupa dell'accoglienza nell'alloggio e negli spuntini.</p>
-      </article>
-      <article class="member" data-tilt>
-        <div class="member__img reveal"><img src="https://www.ilbettone.com/wp-content/uploads/2023/08/Alex.jpg" alt="Alex"></div>
-        <h3>Alex</h3>
-        <p>Arriva dallo Sri Lanka. Cura gli animali, aiuta nei campi ed è il custode del Bettone.</p>
-      </article>
-      <article class="member" data-tilt>
-        <div class="member__img reveal"><img src="https://www.ilbettone.com/wp-content/uploads/2023/08/Irene.jpg" alt="Irene"></div>
-        <h3>Irene</h3>
-        <p>Cuoca. Segue la fattoria didattica e prepara conserve, salse e prodotti della tenuta.</p>
-      </article>
-    </div>
-  </section>
+    <!-- colline lontane -->
+    <svg class="hero__layer hero__far" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 620 C 120 560 200 470 300 470 C 390 470 430 560 520 560 C 600 560 640 420 760 410 C 880 400 910 540 1000 545 C 1090 550 1120 450 1220 440 C 1330 430 1380 560 1480 560 C 1540 560 1580 530 1600 520 L1600 900 L0 900Z" fill="#c9dba8" stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
 
-  <!-- CONTATTI -->
-  <section class="contact" id="contatti" data-bg="green">
-    <div class="contact__head">
-      <span class="section-head__n js-fade">05 · Contatti</span>
-      <h2 class="contact__title"><span class="line js-split-chars">Vieni</span><span class="line js-split-chars"><em>a trovarci</em></span></h2>
+    <!-- colline con la villa -->
+    <svg class="hero__layer hero__mid" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M0 700 C 150 690 250 600 380 590 C 470 583 520 640 600 640 C 680 640 720 500 800 470 C 860 448 900 470 940 520 C 990 580 1050 640 1150 640 C 1250 640 1320 590 1420 600 C 1500 608 1560 640 1600 650 L1600 900 L0 900Z" fill="#aabf48"/>
+        <g fill="none" stroke="#7d9524" stroke-width="7" stroke-dasharray="2 16">
+          <path d="M1010 640 C 1080 660 1160 660 1240 640"/><path d="M1000 670 C 1080 690 1170 690 1260 668"/><path d="M990 700 C 1080 722 1180 722 1280 698"/><path d="M985 732 C 1080 754 1190 754 1300 728"/>
+        </g>
+        <!-- villa -->
+        <g transform="translate(300 506)">
+          <rect x="112" y="-2" width="12" height="18" fill="#c4532d"/>
+          <path d="M-10 34 L10 10 H140 L160 34 Z" fill="#c4532d"/>
+          <rect x="0" y="32" width="150" height="62" fill="#f3e1bd"/>
+          <g fill="#4a1a0e" stroke="none">
+            <rect x="16" y="44" width="12" height="14" rx="2"/><rect x="48" y="44" width="12" height="14" rx="2"/><rect x="90" y="44" width="12" height="14" rx="2"/><rect x="122" y="44" width="12" height="14" rx="2"/>
+          </g>
+          <path d="M62 94 V76 a13 13 0 0 1 26 0 V94" fill="#7f2a16"/>
+          <path d="M14 94 V80 a9 9 0 0 1 18 0 V94 M118 94 V80 a9 9 0 0 1 18 0 V94" fill="#a8c4c4"/>
+        </g>
+        <g fill="#5d7a1c">
+          <path d="M478 600 c-14 -30 -10 -80 8 -98 c18 18 22 68 8 98 z"/>
+          <path d="M508 606 c-12 -26 -8 -66 6 -82 c14 16 18 56 6 82 z"/>
+          <path d="M268 604 c-12 -26 -8 -66 6 -82 c14 16 18 56 6 82 z"/>
+        </g>
+      </g>
+    </svg>
+
+    <!-- titolo, fra le colline -->
+    <div class="hero__title-wrap">
+      <p class="hero__kicker hand"><span>fattoria</span> · <span>alloggio</span> · <span>spuntini</span></p>
+      <h1 class="hero__title" aria-label="Il Bettone">
+        <span class="hl">I</span><span class="hl">L</span><span class="hl hl--sp"> </span><span class="hl">B</span><span class="hl">E</span><span class="hl">T</span><span class="hl">T</span><span class="hl">O</span><span class="hl">N</span><span class="hl">E</span>
+      </h1>
+      <p class="hero__place">Teolo · Parco dei Colli Euganei</p>
     </div>
-    <div class="contact__grid">
-      <div class="contact__info">
-        <div class="info js-fade"><span>Scrivi o chiama Federica</span><a href="tel:+393402680393" data-hover>340 268 0393</a></div>
-        <div class="info js-fade"><span>Email</span><a href="mailto:info@ilbettone.com" data-hover>info@ilbettone.com</a></div>
-        <div class="info js-fade"><span>Dove</span><a href="https://maps.google.com/?q=Via+Bettone+17+35037+Teolo+PD" target="_blank" rel="noopener" data-hover>Via Bettone 17<br>35037 Teolo (PD)</a></div>
-        <div class="info js-fade"><span>Social</span><a href="https://www.instagram.com/ilbettone/" target="_blank" rel="noopener" data-hover>@ilbettone</a></div>
-        <a class="btn btn--light js-fade" data-magnetic href="https://wa.me/393402680393" target="_blank" rel="noopener"><span>Scrivici su WhatsApp</span></a>
-      </div>
-      <form class="form js-form">
-        <div class="field js-fade"><input id="f-name" name="nome" required placeholder=" "><label for="f-name">Nome e cognome</label></div>
-        <div class="field js-fade"><select id="f-what" name="cosa" required>
-          <option value="Visita in fattoria">Visita in fattoria</option>
-          <option value="Pranzo agli spuntini">Pranzo agli spuntini</option>
-          <option value="Soggiorno nell'alloggio">Soggiorno nell'alloggio</option>
-          <option value="Settimane verdi">Settimane verdi</option>
-          <option value="Scuole / gruppi">Scuole / gruppi</option>
-        </select><label for="f-what" class="is-up">Mi interessa</label></div>
-        <div class="field-row">
-          <div class="field js-fade"><input id="f-date" name="data" type="date"><label for="f-date" class="is-up">Quando</label></div>
-          <div class="field js-fade"><input id="f-pp" name="persone" type="number" min="1" placeholder=" "><label for="f-pp">Persone</label></div>
+
+    <!-- collina vicina con albero e pecore -->
+    <svg class="hero__layer hero__near" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M0 820 C 200 760 380 720 560 740 C 700 755 760 800 900 800 C 1050 800 1150 730 1320 720 C 1450 712 1540 740 1600 760 L1600 900 L0 900Z" fill="#8ea832"/>
+        <g class="tree">
+          <path d="M150 790 C 160 720 158 640 146 600 L 186 600 C 176 650 180 720 196 790 Z" fill="#7f4a26"/>
+          <path d="M150 640 C 120 620 100 610 84 590 M184 630 C 210 610 236 604 250 590" fill="none"/>
+          <g class="tree__crown" fill="#5d7a1c">
+            <circle cx="96" cy="560" r="62"/><circle cx="250" cy="560" r="62"/><circle cx="170" cy="500" r="80"/><circle cx="120" cy="470" r="56"/><circle cx="230" cy="470" r="56"/><circle cx="172" cy="580" r="58"/>
+          </g>
+          <g fill="#d6402f" stroke-width="3"><circle cx="128" cy="520" r="8"/><circle cx="214" cy="540" r="8"/><circle cx="182" cy="460" r="8"/><circle cx="100" cy="580" r="8"/></g>
+        </g>
+        <g class="fence" fill="#f3e1bd" stroke-width="4">
+          <path d="M960 790 C 1060 770 1160 744 1260 736" fill="none"/>
+          <path d="M970 812 V778 l6 -6 l6 6 V808 Z"/><path d="M1040 796 V762 l6 -6 l6 6 V792 Z"/><path d="M1110 780 V748 l6 -6 l6 6 V776 Z"/><path d="M1180 766 V734 l6 -6 l6 6 V762 Z"/>
+        </g>
+        <g class="hsheep hsheep--1" transform="translate(1330 680)">
+          <path d="M14 46 V64 M38 46 V64" fill="none" stroke-width="6"/>
+          <path d="M4 34 a12 12 0 0 1 10 -18 a14 14 0 0 1 24 -6 a14 14 0 0 1 22 8 a12 12 0 0 1 4 22 a12 12 0 0 1 -14 12 a14 14 0 0 1 -22 0 a12 12 0 0 1 -24 -18z" fill="#fff"/>
+          <ellipse cx="0" cy="26" rx="12" ry="15" fill="#4a1a0e"/>
+        </g>
+        <g class="hsheep hsheep--2" transform="translate(1440 700) scale(-.8 .8)">
+          <path d="M14 46 V64 M38 46 V64" fill="none" stroke-width="6"/>
+          <path d="M4 34 a12 12 0 0 1 10 -18 a14 14 0 0 1 24 -6 a14 14 0 0 1 22 8 a12 12 0 0 1 4 22 a12 12 0 0 1 -14 12 a14 14 0 0 1 -22 0 a12 12 0 0 1 -24 -18z" fill="#fff"/>
+          <ellipse cx="0" cy="26" rx="12" ry="15" fill="#4a1a0e"/>
+        </g>
+      </g>
+    </svg>
+
+    <!-- erba in primo piano -->
+    <svg class="hero__layer hero__front" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M0 900 L0 862 C 200 842 400 872 600 852 C 800 832 1000 872 1200 856 C 1400 840 1500 862 1600 852 L1600 900Z" fill="#6f8c25"/>
+        <g fill="none" stroke-width="4"><path d="M90 862 q-6 -24 -16 -34 M100 860 q2 -26 10 -36 M520 856 q-4 -22 -14 -30 M530 855 q4 -24 12 -32 M1020 864 q-6 -24 -16 -34 M1032 862 q2 -26 10 -36 M1460 850 q-4 -22 -14 -30"/></g>
+        <g class="flower"><path d="M300 852 V812" fill="none" stroke-width="4"/><g fill="#fff"><circle cx="300" cy="798" r="9"/><circle cx="314" cy="806" r="9"/><circle cx="286" cy="806" r="9"/><circle cx="292" cy="820" r="9"/><circle cx="308" cy="820" r="9"/></g><circle cx="300" cy="810" r="7" fill="#f2b632"/></g>
+        <g class="flower"><path d="M760 842 V806" fill="none" stroke-width="4"/><g fill="#f2b2a4"><circle cx="760" cy="792" r="8"/><circle cx="773" cy="800" r="8"/><circle cx="747" cy="800" r="8"/><circle cx="753" cy="813" r="8"/><circle cx="767" cy="813" r="8"/></g><circle cx="760" cy="804" r="6" fill="#f2b632"/></g>
+        <g class="flower"><path d="M1290 852 V814" fill="none" stroke-width="4"/><g fill="#fff"><circle cx="1290" cy="800" r="9"/><circle cx="1304" cy="808" r="9"/><circle cx="1276" cy="808" r="9"/><circle cx="1282" cy="822" r="9"/><circle cx="1298" cy="822" r="9"/></g><circle cx="1290" cy="812" r="7" fill="#f2b632"/></g>
+      </g>
+    </svg>
+
+    <!-- finestra video -->
+    <div class="hero__window">
+      <video class="hero__video" src="assets/video/bettone.mp4" poster="assets/img/poster.webp" muted loop playsinline preload="metadata"></video>
+      <p class="hero__caption"><span class="hand">benvenuti al</span><span>Bettone</span></p>
+    </div>
+
+    <a href="#manifesto" class="hero__scroll" aria-label="Scorri">
+      <span class="hand">scorri giù</span>
+      <svg viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2 V36 M3 27 L12 36 L21 27"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" id="manifesto" data-theme="cream">
+  <p class="eyebrow"><span class="dot"></span>Il sogno</p>
+  <p class="manifesto__text js-words">
+    Nei nostri <em>otto ettari</em> <span class="pill"><img src="assets/img/prato.webp" alt="" loading="lazy"></span> di terra è partito un sogno: una fattoria dove gli animali vivono <em>liberi</em> <span class="pill"><img src="assets/img/galline.webp" alt="" loading="lazy"></span> e si nutrono in mezzo alla natura. Da cento anni nessun animale viveva qui. <span class="pill pill--round"><img src="assets/img/pecore.webp" alt="" loading="lazy"></span> Adesso sì.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><p class="stat__n"><span class="js-num" data-to="8">0</span></p><p class="stat__l">ettari di terra nel Parco dei Colli Euganei</p></div>
+    <div class="stat"><p class="stat__n">'<span class="js-num" data-to="700">0</span></p><p class="stat__l">la villa, restaurata con cura conservativa</p></div>
+    <div class="stat"><p class="stat__n"><span class="js-num" data-to="100">0</span></p><p class="stat__l">anni senza animali, prima di noi</p></div>
+    <div class="stat"><p class="stat__n"><span class="js-num" data-to="2">0</span></p><p class="stat__l">gatti di fattoria: Gino e Mino</p></div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bands" aria-label="I nostri prodotti">
+  <div class="band band--a"><div class="band__track">
+    <span>Uova</span><i>✿</i><span>Verdure</span><i>✿</i><span>Salami</span><i>✿</i><span>Marmellate</span><i>✿</i><span>Pane</span><i>✿</i><span>Vino naturale</span><i>✿</i>
+  </div></div>
+  <div class="band band--b" aria-hidden="true"><div class="band__track">
+    <span class="hand">fattoria didattica</span><i>●</i><span class="hand">alloggio</span><i>●</i><span class="hand">spuntini</span><i>●</i><span class="hand">colli euganei</span><i>●</i>
+  </div></div>
+</section>
+
+<!-- ============ FATTORIA (scroll orizzontale) ============ -->
+<section class="farm" id="fattoria" data-theme="leaf">
+  <div class="farm__pin">
+    <p class="farm__ghost hand" aria-hidden="true">la fattoria</p>
+    <div class="farm__track">
+      <svg class="farm__path" preserveAspectRatio="none" viewBox="0 0 1000 100" aria-hidden="true"><path d="M0 60 C 60 10 120 100 180 50 S 300 10 360 60 S 480 100 540 50 S 660 10 720 60 S 840 100 900 50 S 980 30 1000 50" fill="none"/></svg>
+
+      <article class="farm__intro">
+        <p class="eyebrow"><span class="dot"></span>01 — Fattoria</p>
+        <h2 class="title js-chars">La Fattoria</h2>
+        <p class="lead">Prima sono arrivate due vitelle, oggi mucche. Poi le pecore dall'Alpago con i loro agnellini, nati nella nostra terra. I maiali neri, le galline, i capponi, i galli. E due gatti.</p>
+        <p class="farm__hint hand">continua a scorrere →</p>
+      </article>
+
+      <!-- Mucche -->
+      <article class="card card--sun" data-cursor="Muu!">
+        <div class="card__art">
+          <svg class="animal animal--cow animal--back" viewBox="0 0 260 220" aria-hidden="true" style="--body:#c98a4b;--spot:#fff">
+            <ellipse cx="135" cy="206" rx="95" ry="10" fill="#4a1a0e" opacity=".15"/>
+            <g class="boil" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <g class="cow__tail"><path d="M226 96 C 244 114 242 144 236 164" fill="none"/><path d="M236 160 c-9 4 -9 17 2 19 c11 -2 11 -15 -2 -19z" fill="#4a1a0e"/></g>
+              <rect x="88" y="140" width="20" height="58" rx="6" style="fill:var(--body)"/><rect x="194" y="140" width="20" height="58" rx="6" style="fill:var(--body)"/>
+              <rect x="88" y="186" width="20" height="12" rx="3" fill="#4a1a0e"/><rect x="194" y="186" width="20" height="12" rx="3" fill="#4a1a0e"/>
+              <rect x="70" y="78" width="160" height="88" rx="40" style="fill:var(--body)"/>
+              <path d="M118 84 c22 -6 40 6 36 26 c-4 18 -30 16 -38 4 c-6 -10 -8 -26 2 -30z" style="fill:var(--spot)" stroke="none"/>
+              <path d="M184 122 c16 -4 30 6 26 20 c-4 12 -20 14 -28 6 c-6 -8 -6 -22 2 -26z" style="fill:var(--spot)" stroke="none"/>
+              <path d="M150 164 q12 18 26 0" fill="#f2b2a4"/>
+              <g class="cow__head">
+                <path d="M48 50 c-12 -8 -12 -22 0 -30 c-2 12 2 20 8 24z" fill="#f3e1bd"/><path d="M92 50 c12 -8 12 -22 0 -30 c2 12 -2 20 -8 24z" fill="#f3e1bd"/>
+                <ellipse cx="30" cy="62" rx="18" ry="9" transform="rotate(-20 30 62)" style="fill:var(--body)"/><ellipse cx="110" cy="62" rx="18" ry="9" transform="rotate(20 110 62)" style="fill:var(--body)"/>
+                <path d="M44 46 h52 q12 0 12 14 v44 h-76 v-44 q0 -14 12 -14z" style="fill:var(--body)"/>
+                <rect x="28" y="92" width="84" height="42" rx="21" fill="#f2b2a4"/>
+                <ellipse cx="56" cy="112" rx="5" ry="7" fill="#4a1a0e" stroke="none"/><ellipse cx="84" cy="112" rx="5" ry="7" fill="#4a1a0e" stroke="none"/>
+                <g class="blink"><circle cx="54" cy="72" r="6" fill="#4a1a0e" stroke="none"/><circle cx="86" cy="72" r="6" fill="#4a1a0e" stroke="none"/></g>
+              </g>
+            </g>
+          </svg>
+          <svg class="animal animal--cow" viewBox="0 0 260 220" aria-hidden="true" style="--body:#fff;--spot:#7f2a16">
+            <ellipse cx="135" cy="206" rx="95" ry="10" fill="#4a1a0e" opacity=".15"/>
+            <g class="boil" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <g class="cow__tail"><path d="M226 96 C 244 114 242 144 236 164" fill="none"/><path d="M236 160 c-9 4 -9 17 2 19 c11 -2 11 -15 -2 -19z" fill="#7f2a16"/></g>
+              <rect x="88" y="140" width="20" height="58" rx="6" style="fill:var(--body)"/><rect x="194" y="140" width="20" height="58" rx="6" style="fill:var(--body)"/>
+              <rect x="88" y="186" width="20" height="12" rx="3" fill="#4a1a0e"/><rect x="194" y="186" width="20" height="12" rx="3" fill="#4a1a0e"/>
+              <rect x="70" y="78" width="160" height="88" rx="40" style="fill:var(--body)"/>
+              <path d="M118 84 c22 -6 40 6 36 26 c-4 18 -30 16 -38 4 c-6 -10 -8 -26 2 -30z" style="fill:var(--spot)" stroke="none"/>
+              <path d="M184 122 c16 -4 30 6 26 20 c-4 12 -20 14 -28 6 c-6 -8 -6 -22 2 -26z" style="fill:var(--spot)" stroke="none"/>
+              <path d="M150 164 q12 18 26 0" fill="#f2b2a4"/>
+              <g class="cow__head">
+                <path d="M48 50 c-12 -8 -12 -22 0 -30 c-2 12 2 20 8 24z" fill="#f3e1bd"/><path d="M92 50 c12 -8 12 -22 0 -30 c2 12 -2 20 -8 24z" fill="#f3e1bd"/>
+                <ellipse cx="30" cy="62" rx="18" ry="9" transform="rotate(-20 30 62)" style="fill:var(--body)"/><ellipse cx="110" cy="62" rx="18" ry="9" transform="rotate(20 110 62)" style="fill:var(--spot)"/>
+                <path d="M44 46 h52 q12 0 12 14 v44 h-76 v-44 q0 -14 12 -14z" style="fill:var(--body)"/>
+                <path d="M74 46 h22 q12 0 12 14 v18 q-18 2 -26 -10 q-8 -10 -8 -22z" style="fill:var(--spot)" stroke="none"/>
+                <rect x="28" y="92" width="84" height="42" rx="21" fill="#f2b2a4"/>
+                <ellipse cx="56" cy="112" rx="5" ry="7" fill="#4a1a0e" stroke="none"/><ellipse cx="84" cy="112" rx="5" ry="7" fill="#4a1a0e" stroke="none"/>
+                <g class="blink"><circle cx="54" cy="72" r="6" fill="#4a1a0e" stroke="none"/><circle cx="86" cy="72" r="6" fill="#4a1a0e" stroke="none"/><circle cx="56" cy="70" r="2" fill="#fff" stroke="none"/><circle cx="88" cy="70" r="2" fill="#fff" stroke="none"/></g>
+                <path d="M60 136 h20 l4 16 h-28z" fill="#f2b632"/>
+              </g>
+            </g>
+          </svg>
         </div>
-        <div class="field js-fade"><textarea id="f-msg" name="messaggio" rows="3" placeholder=" "></textarea><label for="f-msg">Messaggio</label></div>
-        <button class="btn btn--light js-fade" data-magnetic type="submit"><span>Invia richiesta</span></button>
-        <p class="form__note js-fade">La richiesta si apre su WhatsApp, pronta da inviare.</p>
-      </form>
+        <div class="card__body">
+          <p class="card__num">01</p>
+          <h3>Gertrude <em class="hand">&amp;</em> Carolina</h3>
+          <p>Due vitelle arrivate al Bettone, oggi due mucche che pascolano libere.</p>
+        </div>
+      </article>
+
+      <figure class="photo photo--tall" data-cursor="Beee!"><div class="photo__in"><img src="assets/img/pecore.webp" alt="Le pecore al pascolo sui prati del Bettone" loading="lazy"></div><figcaption class="hand">al pascolo</figcaption></figure>
+
+      <!-- Pecore -->
+      <article class="card card--sky" data-cursor="Beee!">
+        <div class="card__art">
+          <svg class="animal animal--sheep" viewBox="0 0 240 210" aria-hidden="true">
+            <ellipse cx="130" cy="198" rx="86" ry="9" fill="#4a1a0e" opacity=".15"/>
+            <g class="boil" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <g fill="#4a1a0e"><rect x="88" y="140" width="13" height="52" rx="6"/><rect x="114" y="144" width="13" height="50" rx="6"/><rect x="160" y="144" width="13" height="50" rx="6"/><rect x="184" y="140" width="13" height="52" rx="6"/></g>
+              <path class="sheep__wool" d="M76 112 a22 22 0 0 1 18 -36 a26 26 0 0 1 44 -14 a26 26 0 0 1 46 6 a22 22 0 0 1 26 34 a22 22 0 0 1 -14 38 a26 26 0 0 1 -44 8 a26 26 0 0 1 -46 -2 a22 22 0 0 1 -30 -34z" fill="#fff"/>
+              <g class="sheep__head">
+                <ellipse cx="52" cy="72" rx="22" ry="9" transform="rotate(-24 52 72)" fill="#4a1a0e"/>
+                <ellipse cx="66" cy="100" rx="26" ry="32" fill="#4a1a0e"/>
+                <path d="M46 72 a10 10 0 0 1 12 -14 a12 12 0 0 1 20 2 a10 10 0 0 1 4 16 z" fill="#fff"/>
+                <g class="blink"><circle cx="56" cy="96" r="7" fill="#fff" stroke="none"/><circle cx="78" cy="96" r="7" fill="#fff" stroke="none"/><circle cx="57" cy="97" r="3.5" fill="#4a1a0e" stroke="none"/><circle cx="79" cy="97" r="3.5" fill="#4a1a0e" stroke="none"/></g>
+                <ellipse cx="54" cy="116" rx="5" ry="3" fill="#f2b2a4" stroke="none"/><ellipse cx="80" cy="116" rx="5" ry="3" fill="#f2b2a4" stroke="none"/>
+              </g>
+            </g>
+          </svg>
+          <svg class="animal animal--lamb" viewBox="0 0 240 210" aria-hidden="true">
+            <g class="boil" stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+              <g fill="#4a1a0e"><rect x="88" y="140" width="13" height="52" rx="6"/><rect x="114" y="144" width="13" height="50" rx="6"/><rect x="160" y="144" width="13" height="50" rx="6"/><rect x="184" y="140" width="13" height="52" rx="6"/></g>
+              <path class="sheep__wool" d="M76 112 a22 22 0 0 1 18 -36 a26 26 0 0 1 44 -14 a26 26 0 0 1 46 6 a22 22 0 0 1 26 34 a22 22 0 0 1 -14 38 a26 26 0 0 1 -44 8 a26 26 0 0 1 -46 -2 a22 22 0 0 1 -30 -34z" fill="#fff"/>
+              <g class="sheep__head">
+                <ellipse cx="66" cy="100" rx="28" ry="30" fill="#f3e1bd"/>
+                <ellipse cx="40" cy="92" rx="16" ry="8" transform="rotate(20 40 92)" fill="#f3e1bd"/>
+                <g class="blink"><circle cx="56" cy="98" r="5" fill="#4a1a0e" stroke="none"/><circle cx="78" cy="98" r="5" fill="#4a1a0e" stroke="none"/></g>
+                <path d="M60 114 q6 6 12 0" fill="none"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__num">02</p>
+          <h3>Le pecore dall'Alpago</h3>
+          <p>E i loro bellissimi agnellini, nati qui, nella nostra terra.</p>
+        </div>
+      </article>
+
+      <!-- Maiali neri -->
+      <article class="card card--pink" data-cursor="Oink!">
+        <div class="card__art">
+          <svg class="animal animal--pig" viewBox="0 0 250 210" aria-hidden="true">
+            <ellipse cx="135" cy="198" rx="92" ry="9" fill="#4a1a0e" opacity=".15"/>
+            <g class="boil" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <path class="pig__tail" d="M216 104 c16 -8 22 8 10 14 c-10 4 -12 -10 0 -12" fill="none"/>
+              <g fill="#3b302e"><rect x="86" y="140" width="22" height="52" rx="8"/><rect x="176" y="140" width="22" height="52" rx="8"/></g>
+              <ellipse cx="140" cy="116" rx="82" ry="56" fill="#3b302e"/>
+              <path d="M150 74 q22 -6 38 6" fill="none" stroke="#5e504c"/>
+              <g class="pig__head">
+                <path d="M54 66 l-8 -34 l32 20z" fill="#3b302e"/><path d="M96 60 l10 -32 l12 34z" fill="#3b302e"/>
+                <circle cx="76" cy="104" r="46" fill="#3b302e"/>
+                <ellipse cx="62" cy="122" rx="24" ry="17" fill="#6b5552"/>
+                <ellipse cx="54" cy="122" rx="4" ry="6" fill="#2a2020" stroke="none"/><ellipse cx="70" cy="122" rx="4" ry="6" fill="#2a2020" stroke="none"/>
+                <g class="blink"><circle cx="66" cy="90" r="8" fill="#fff" stroke="none"/><circle cx="96" cy="90" r="8" fill="#fff" stroke="none"/><circle cx="68" cy="91" r="4" fill="#2a2020" stroke="none"/><circle cx="98" cy="91" r="4" fill="#2a2020" stroke="none"/></g>
+                <ellipse cx="102" cy="114" rx="9" ry="5" fill="#f2b2a4" opacity=".55" stroke="none"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__num">03</p>
+          <h3>I maiali neri</h3>
+          <p>Liberi di grufolare all'aperto, tra erba, terra e sole.</p>
+        </div>
+      </article>
+
+      <!-- Galline -->
+      <article class="card card--olive" data-cursor="Coccodè!">
+        <div class="card__art">
+          <svg class="animal animal--hen" viewBox="0 0 240 220" aria-hidden="true">
+            <ellipse cx="120" cy="206" rx="80" ry="9" fill="#4a1a0e" opacity=".15"/>
+            <g class="boil" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M98 170 V200 M84 202 h28 M132 170 V200 M120 202 h26" fill="none" stroke="#e0a21e" stroke-width="6"/>
+              <path d="M70 116 C 70 76 118 66 146 94 L178 58 C 190 100 182 152 136 172 C 96 188 70 162 70 116z" fill="#c0602e"/>
+              <path d="M178 58 c4 -16 18 -18 22 -6 M178 58 c12 -6 24 4 18 14" fill="none" stroke="#7d3a18" stroke-width="5"/>
+              <path class="hen__wing" d="M104 124 c22 -12 48 0 52 20 c-22 10 -42 6 -52 -20z" fill="#9a4520"/>
+              <g class="hen__head">
+                <path d="M62 52 c0 -16 14 -16 14 -4 c2 -14 16 -12 14 2 c6 -10 16 -4 10 8z" fill="#d6402f"/>
+                <circle cx="80" cy="80" r="30" fill="#c0602e"/>
+                <path d="M52 78 l-20 7 l20 8z" fill="#f2b632"/>
+                <path d="M54 96 q-4 14 6 16 q8 -2 4 -14z" fill="#d6402f"/>
+                <g class="blink"><circle cx="72" cy="74" r="5" fill="#4a1a0e" stroke="none"/><circle cx="73.5" cy="72.5" r="1.8" fill="#fff" stroke="none"/></g>
+              </g>
+            </g>
+            <g class="chick boil" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" transform="translate(178 150)">
+              <path d="M8 44 v10 M20 44 v10" stroke="#e0a21e"/>
+              <circle cx="14" cy="28" r="20" fill="#f7d34a"/>
+              <path d="M-4 24 l-10 4 l10 4z" fill="#f2b632"/>
+              <circle cx="6" cy="22" r="3" fill="#4a1a0e" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__num">04</p>
+          <h3>Galline, capponi &amp; galli</h3>
+          <p>Uova fresche ogni giorno, e una sveglia che non sbaglia mai.</p>
+        </div>
+      </article>
+
+      <figure class="photo" data-cursor="Ciao!"><div class="photo__in"><img src="assets/img/galline.webp" alt="Il cane della fattoria davanti al pollaio con le galline" loading="lazy"></div><figcaption class="hand">il pollaio</figcaption></figure>
+
+      <!-- Gatti -->
+      <article class="card card--cream" data-cursor="Miao!">
+        <div class="card__art">
+          <svg class="animal animal--cats" viewBox="0 0 280 220" aria-hidden="true">
+            <ellipse cx="140" cy="208" rx="110" ry="9" fill="#4a1a0e" opacity=".15"/>
+            <g class="boil cat cat--gino" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <path class="cat__tail" d="M120 196 c30 4 40 -24 26 -40" fill="none" stroke-width="12"/>
+              <path class="cat__tail" d="M120 196 c30 4 40 -24 26 -40" fill="none" stroke="#e39a3b" stroke-width="5"/>
+              <path d="M30 200 C 22 150 40 112 64 104 L 104 104 C 128 112 142 150 132 200 Z" fill="#e39a3b"/>
+              <path d="M56 140 q12 -6 24 0 M58 160 q14 -6 28 0" fill="none" stroke="#b3651e"/>
+              <g class="cat__head">
+                <path d="M50 66 l-4 -36 l30 20z M110 66 l4 -36 l-30 20z" fill="#e39a3b"/>
+                <circle cx="80" cy="76" r="38" fill="#e39a3b"/>
+                <path d="M80 40 v12 M70 42 l3 10 M90 42 l-3 10" fill="none" stroke="#b3651e"/>
+                <g class="blink"><ellipse cx="66" cy="74" rx="5" ry="7" fill="#4a1a0e" stroke="none"/><ellipse cx="94" cy="74" rx="5" ry="7" fill="#4a1a0e" stroke="none"/></g>
+                <path d="M76 88 h8 l-4 5z" fill="#f2b2a4"/>
+                <path d="M80 93 q-6 6 -10 2 M80 93 q6 6 10 2 M50 88 h-22 M52 96 l-20 6 M110 88 h22 M108 96 l20 6" fill="none" stroke-width="3"/>
+              </g>
+            </g>
+            <g class="boil cat cat--mino" transform="translate(126 6)" stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <path class="cat__tail" d="M30 196 c-30 4 -40 -24 -26 -40" fill="none" stroke-width="12"/>
+              <path class="cat__tail" d="M30 196 c-30 4 -40 -24 -26 -40" fill="none" stroke="#5f5a58" stroke-width="5"/>
+              <path d="M30 194 C 22 144 40 106 64 98 L 104 98 C 128 106 142 144 132 194 Z" fill="#5f5a58"/>
+              <path d="M66 120 q16 30 32 0 q-4 40 -16 50 q-12 -10 -16 -50z" fill="#fff" stroke="none"/>
+              <g class="cat__head">
+                <path d="M50 60 l-4 -36 l30 20z M110 60 l4 -36 l-30 20z" fill="#5f5a58"/>
+                <circle cx="80" cy="70" r="38" fill="#5f5a58"/>
+                <path d="M62 82 q18 26 36 0 q-2 20 -18 22 q-16 -2 -18 -22z" fill="#fff" stroke="none"/>
+                <g class="blink"><ellipse cx="66" cy="68" rx="6" ry="7" fill="#f7d34a" stroke="none"/><ellipse cx="94" cy="68" rx="6" ry="7" fill="#f7d34a" stroke="none"/><ellipse cx="66" cy="68" rx="2" ry="6" fill="#2a2020" stroke="none"/><ellipse cx="94" cy="68" rx="2" ry="6" fill="#2a2020" stroke="none"/></g>
+                <path d="M76 82 h8 l-4 5z" fill="#f2b2a4"/>
+                <path d="M50 82 h-22 M52 90 l-20 6 M110 82 h22 M108 90 l20 6" fill="none" stroke-width="3"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__num">05</p>
+          <h3>Gino <em class="hand">&amp;</em> Mino</h3>
+          <p>I due gatti di casa. Controllano tutto, soprattutto il sole sul muretto.</p>
+        </div>
+      </article>
+
+      <article class="farm__end">
+        <img src="assets/img/fattorie-didattiche.jpg" alt="Fattorie Didattiche — Regione del Veneto" loading="lazy">
+        <p class="hand">siamo fattoria didattica</p>
+        <p>Iscritti all'albo della Regione Veneto.</p>
+      </article>
     </div>
-    <div class="map reveal"><iframe title="Mappa Il Bettone" loading="lazy" src="https://maps.google.com/maps?q=Via%20bettone%2017%20%E2%80%93%2035037%20Teolo%20%28PD%29&amp;t=m&amp;z=12&amp;output=embed&amp;iwloc=near"></iframe></div>
-  </section>
+  </div>
+</section>
+
+<!-- ============ DIDATTICA (stacking cards) ============ -->
+<section class="learn" data-theme="leaf" aria-labelledby="learn-t">
+  <div class="learn__head">
+    <p class="eyebrow"><span class="dot"></span>Fattoria didattica</p>
+    <h2 class="title js-chars" id="learn-t">Vieni a scoprirla</h2>
+    <p class="lead">Visite guidate per scuole e famiglie. Siamo aperti in tutte le vacanze scolastiche e d'estate con i nostri centri estivi.</p>
+  </div>
+  <div class="stack">
+    <article class="stack__card stack__card--1">
+      <div class="stack__txt"><p class="card__num">A</p><h3>Le scuole</h3><p>Visite guidate in fattoria: gli animali, l'orto, le api, la terra. Imparare toccando con mano.</p></div>
+      <svg class="stack__ico boil" viewBox="0 0 200 200" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M30 176 V86 L100 30 L170 86 V176 Z" fill="#c4532d"/><path d="M20 92 L100 26 L180 92" fill="none"/><rect x="72" y="110" width="56" height="66" fill="#f3e1bd"/><path d="M72 110 L128 176 M128 110 L72 176" fill="none"/><rect x="86" y="66" width="28" height="24" fill="#f3e1bd"/></g></svg>
+      <img class="stack__photo" src="assets/img/arnie.webp" alt="Le arnie colorate del Bettone" loading="lazy">
+    </article>
+    <article class="stack__card stack__card--2">
+      <div class="stack__txt"><p class="card__num">B</p><h3>Le famiglie</h3><p>Una giornata all'aria aperta, con i bambini liberi di correre sui prati, tra pecore e galline.</p></div>
+      <svg class="stack__ico boil" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 172 C 40 130 20 100 26 70 C 32 40 70 30 100 62 C 130 30 168 40 174 70 C 180 100 160 130 100 172 Z" fill="#d6402f" stroke="#4a1a0e" stroke-width="6" stroke-linejoin="round"/><path d="M58 70 q6 -16 22 -16" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/></svg>
+      <img class="stack__photo" src="assets/img/prato.webp" alt="I prati della fattoria" loading="lazy">
+    </article>
+    <article class="stack__card stack__card--3">
+      <div class="stack__txt"><p class="card__num">C</p><h3>Le vacanze</h3><p>Siamo aperti a Natale, Carnevale e Pasqua: tutte le vacanze scolastiche sono buone per venirci a trovare.</p></div>
+      <svg class="stack__ico boil" viewBox="0 0 200 200" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M100 18 l20 50 l54 4 l-42 34 l14 52 l-46 -30 l-46 30 l14 -52 l-42 -34 l54 -4z" fill="#f2b632"/><circle cx="84" cy="96" r="5" fill="#4a1a0e"/><circle cx="116" cy="96" r="5" fill="#4a1a0e"/><path d="M88 116 q12 10 24 0" fill="none"/></g></svg>
+      <img class="stack__photo" src="assets/img/lavanda.webp" alt="Fiori di lavanda" loading="lazy">
+    </article>
+    <article class="stack__card stack__card--4">
+      <div class="stack__txt"><p class="card__num">D</p><h3>Le settimane verdi</h3><p>I nostri centri estivi, da giugno a settembre. Settimane in fattoria, tra animali, giochi e natura.</p></div>
+      <svg class="stack__ico boil" viewBox="0 0 200 200" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M100 180 V100" fill="none"/><path d="M100 120 C 40 120 26 60 40 24 C 90 24 110 70 100 120 Z" fill="#9dad02"/><path d="M100 104 C 150 110 178 70 170 36 C 130 30 100 60 100 104 Z" fill="#aabf48"/><path d="M48 36 C 70 60 86 84 100 118 M162 46 C 140 64 118 84 102 102" fill="none"/></g></svg>
+      <img class="stack__photo" src="assets/img/collina.webp" alt="Le colline attorno alla fattoria" loading="lazy">
+    </article>
+  </div>
+  <div class="learn__cta"><a href="#contatti" class="btn btn--sun" data-magnetic>Prenota una visita</a></div>
+</section>
+
+<!-- ============ SPUNTINI ============ -->
+<section class="snacks" id="spuntini" data-theme="brown">
+  <div class="snacks__grid">
+    <div class="snacks__text">
+      <p class="eyebrow"><span class="dot"></span>02 — Spuntini</p>
+      <h2 class="title js-chars">Spuntini</h2>
+      <p class="snacks__sub hand">nella vecchia chiesa della Villa</p>
+      <p class="lead">Un edificio in pietra, accogliente ed elegante, dove assaggiare e portare a casa tutti i nostri prodotti: uova, verdure, salami, marmellate, pane e vino naturale.</p>
+      <div class="snacks__open">
+        <p class="snacks__open-k">Aperti a pranzo</p>
+        <p class="snacks__open-v">Sabato <em class="hand">&amp;</em> Domenica</p>
+      </div>
+      <a href="#contatti" class="btn btn--sun" data-magnetic data-topic="Spuntini">Prenota un tavolo</a>
+    </div>
+
+    <div class="snacks__media">
+      <figure class="snacks__img snacks__img--a reveal-img" data-speed="-0.6"><img src="assets/img/tagliatelle.webp" alt="Tagliatelle fatte a mano" loading="lazy"></figure>
+      <figure class="snacks__img snacks__img--b reveal-img" data-speed="0.9"><img src="assets/img/pasta.webp" alt="Le mani che impastano la sfoglia" loading="lazy"></figure>
+
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><defs><path id="badgeCircle" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
+          <circle cx="100" cy="100" r="96" fill="#f2b632" stroke="#4a1a0e" stroke-width="4"/>
+          <text><textPath href="#badgeCircle">fatto a mano · fatto a mano · fatto a mano ·</textPath></text>
+        </svg>
+        <span class="badge__c">✿</span>
+      </div>
+
+      <!-- sticker prodotti -->
+      <svg class="sticker sticker--egg boil" data-speed="1.4" viewBox="0 0 120 120" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="5"><ellipse cx="60" cy="64" rx="34" ry="44" fill="#fbf3e4"/><path d="M44 42 q6 -12 16 -14" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/></g></svg>
+      <svg class="sticker sticker--jam boil" data-speed="-1.2" viewBox="0 0 120 120" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round"><rect x="26" y="40" width="68" height="70" rx="12" fill="#c8324a"/><rect x="34" y="62" width="52" height="28" rx="4" fill="#fbf3e4"/><rect x="22" y="24" width="76" height="20" rx="5" fill="#f3e1bd"/><path d="M40 24 v20 M60 24 v20 M80 24 v20" stroke-width="3"/></g></svg>
+      <svg class="sticker sticker--bread boil" data-speed="0.7" viewBox="0 0 140 120" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M14 80 C 10 40 50 24 70 24 C 90 24 130 40 126 80 C 124 96 16 96 14 80 Z" fill="#d99a52"/><path d="M44 46 l10 16 M66 40 l10 18 M88 46 l10 16" fill="none"/></g></svg>
+      <svg class="sticker sticker--salami boil" data-speed="-0.5" viewBox="0 0 140 120" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M24 60 C 24 30 116 30 116 60 C 116 90 24 90 24 60 Z" fill="#9a3a2a" transform="rotate(-14 70 60)"/><g fill="#fbf3e4" stroke="none"><circle cx="50" cy="66" r="5"/><circle cx="70" cy="54" r="4"/><circle cx="88" cy="58" r="5"/><circle cx="66" cy="74" r="4"/></g><path d="M112 40 q10 -10 16 -2 q-4 10 -16 2z" fill="#f3e1bd"/></g></svg>
+      <svg class="sticker sticker--wine boil" data-speed="1.1" viewBox="0 0 80 160" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round"><path d="M30 8 h20 v40 c14 8 20 22 20 36 v62 a6 6 0 0 1 -6 6 h-48 a6 6 0 0 1 -6 -6 v-62 c0 -14 6 -28 20 -36z" fill="#4f6b1c"/><rect x="18" y="86" width="44" height="40" rx="4" fill="#fbf3e4"/><rect x="28" y="4" width="24" height="14" rx="3" fill="#7f2a16"/></g></svg>
+      <svg class="sticker sticker--carrot boil" data-speed="-1.5" viewBox="0 0 120 140" aria-hidden="true"><g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M60 136 L34 42 C 40 30 80 30 86 42 Z" fill="#ef8a2b"/><path d="M44 66 h10 M50 90 h10 M56 112 h6" fill="none"/><path d="M60 36 C 50 16 36 12 30 14 C 34 28 46 34 60 36 C 64 18 72 6 82 6 C 82 22 72 32 60 36" fill="#6f8c25"/></g></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALLOGGIO (zoom gallery) ============ -->
+<section class="zoom" id="alloggio" data-theme="cream" aria-label="Alloggio">
+  <div class="zoom__sticky">
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/villa.webp" alt="La villa del Settecento"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/camera.webp" alt="Una camera della villa" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/villa-alto.webp" alt="La villa vista dall'alto, immersa nel verde" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/cucina.webp" alt="La cucina con i muri in pietra" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/yurta.webp" alt="La yurta nel bosco" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/poltrone.webp" alt="Poltrone blu davanti al muro in pietra" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/vigneti.webp" alt="I vigneti dei Colli Euganei" loading="lazy"></div></div>
+    <div class="zoom__over">
+      <p class="eyebrow eyebrow--light"><span class="dot"></span>03 — Alloggio</p>
+      <h2 class="zoom__title">Una villa<br><em class="hand">del '700</em></h2>
+    </div>
+  </div>
+</section>
+
+<section class="stay" data-theme="cream">
+  <div class="stay__intro">
+    <p class="stay__text js-lines">In una vecchia villa del Settecento, dopo un restauro conservativo, nasce il nostro alloggio. Per ospitare, accogliere e far vivere a chi soggiorna un momento di quiete e natura, nel magico Parco dei Colli Euganei.</p>
+    <div class="stay__side">
+      <p>Colazioni con cibi secondo natura, soggiorni di relax e sano divertimento.</p>
+      <a href="#contatti" class="btn btn--line" data-magnetic data-topic="Alloggio">Chiedi disponibilità</a>
+    </div>
+  </div>
+  <div class="stay__grid">
+    <figure class="stay__ph stay__ph--1" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/camera.webp" alt="Una camera calda e accogliente" loading="lazy"></div><figcaption><span>01</span> Le camere</figcaption></figure>
+    <figure class="stay__ph stay__ph--2" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/bagno.webp" alt="Il bagno con il pavimento in legno" loading="lazy"></div><figcaption><span>02</span> Il bagno</figcaption></figure>
+    <figure class="stay__ph stay__ph--3" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/yoga.webp" alt="Il prato della villa" loading="lazy"></div><figcaption><span>03</span> Il prato della villa</figcaption></figure>
+    <figure class="stay__ph stay__ph--4" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/yurta-int.webp" alt="L'interno della yurta" loading="lazy"></div><figcaption><span>04</span> La yurta</figcaption></figure>
+    <figure class="stay__ph stay__ph--5" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/panorama.webp" alt="Panorama sui Colli Euganei" loading="lazy"></div><figcaption><span>05</span> La vista</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ CHI SIAMO ============ -->
+<section class="team" id="chi-siamo" data-theme="leaf">
+  <div class="team__head">
+    <p class="eyebrow"><span class="dot"></span>04 — Chi siamo</p>
+    <h2 class="title js-chars">Le persone</h2>
+    <p class="lead">Il Bettone è il progetto di Marco e Federica. Insieme a loro, chi ogni giorno si prende cura della terra, degli animali e degli ospiti.</p>
+  </div>
+  <div class="team__deck">
+    <article class="polaroid polaroid--1" data-cursor="Ciao!">
+      <span class="tape"></span>
+      <div class="polaroid__img"><img src="assets/img/team-federica.webp" alt="Federica" loading="lazy"></div>
+      <h3 class="hand">Federica</h3>
+      <p>Socia e compagna di progetto di Marco. Da sempre appassionata di turismo, arte e persone: a lei il compito di accogliervi e farvi sentire a casa, nell'alloggio e agli spuntini.</p>
+    </article>
+    <article class="polaroid polaroid--2" data-cursor="Ciao!">
+      <span class="tape"></span>
+      <div class="polaroid__img"><img src="assets/img/team-alex.webp" alt="Alex" loading="lazy"></div>
+      <h3 class="hand">Alex</h3>
+      <p>Coltivava mango e cocco in Sri Lanka, il suo paese. Da anni in Italia, al Bettone si occupa degli animali, aiuta Marco in campagna ed è il custode. Porta il sole.</p>
+    </article>
+    <article class="polaroid polaroid--3" data-cursor="Ciao!">
+      <span class="tape"></span>
+      <div class="polaroid__img"><img src="assets/img/team-irene.webp" alt="Irene" loading="lazy"></div>
+      <h3 class="hand">Irene</h3>
+      <p>Cuoca, ma molto di più. Ama i bambini, è figlia di insegnanti e segue la fattoria didattica. Crea con le sue mani i prodotti del Bettone: conserve, pelati, sottaceti, composte.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section class="contact" id="contatti" data-theme="olive">
+  <div class="contact__head">
+    <p class="eyebrow"><span class="dot"></span>05 — Contatti</p>
+    <h2 class="contact__title"><span class="js-chars">Vieni a</span><br><em class="hand js-write">trovarci!</em></h2>
+  </div>
+
+  <div class="contact__grid">
+    <ul class="contact__list">
+      <li><a href="mailto:info@ilbettone.com" class="row" data-cursor="Scrivi"><small>Scrivici</small><span>info@ilbettone.com</span><b>↗</b></a></li>
+      <li><a href="https://wa.me/393402680393" target="_blank" rel="noopener" class="row" data-cursor="WhatsApp"><small>WhatsApp o chiamaci</small><span>340 268 0393</span><b>↗</b></a></li>
+      <li><a href="https://www.instagram.com/ilbettone/" target="_blank" rel="noopener" class="row" data-cursor="Segui"><small>Instagram</small><span>@ilbettone</span><b>↗</b></a></li>
+      <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Bettone+17+35037+Teolo+PD" target="_blank" rel="noopener" class="row" data-cursor="Mappa"><small>Dove siamo</small><span>Via Bettone 17, Teolo</span><b>↗</b></a></li>
+    </ul>
+
+    <form class="form" novalidate>
+      <p class="form__t hand">scrivici due righe</p>
+      <fieldset class="chips">
+        <legend>Ti interessa…</legend>
+        <label><input type="checkbox" name="topic" value="Fattoria didattica"><span>Fattoria didattica</span></label>
+        <label><input type="checkbox" name="topic" value="Spuntini"><span>Spuntini</span></label>
+        <label><input type="checkbox" name="topic" value="Alloggio"><span>Alloggio</span></label>
+        <label><input type="checkbox" name="topic" value="Settimane verdi"><span>Settimane verdi</span></label>
+      </fieldset>
+      <label class="field"><span>Nome</span><input type="text" name="nome" autocomplete="name" required></label>
+      <label class="field"><span>Email o telefono</span><input type="text" name="recapito" autocomplete="email" required></label>
+      <label class="field"><span>Messaggio</span><textarea name="messaggio" rows="3" required></textarea></label>
+      <p class="form__note">Il messaggio si apre nella tua app di posta o su WhatsApp: nessun dato viene salvato da questo sito.</p>
+      <div class="form__btns">
+        <button type="submit" class="btn btn--brown" data-via="mail" data-magnetic>Invia email</button>
+        <button type="submit" class="btn btn--line" data-via="wa" data-magnetic>Invia su WhatsApp</button>
+      </div>
+      <p class="form__err" role="alert"></p>
+    </form>
+  </div>
+</section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="footer" data-bg="cream">
-  <div class="footer__top">
-    <img class="footer__logo" src="https://www.ilbettone.com/wp-content/uploads/2023/02/LOGO_BETTONE-400px-marrone_2026.png" alt="Logo Il Bettone">
-    <div class="footer__badges">
-      <img src="https://www.ilbettone.com/wp-content/uploads/2023/02/logo-Fattorie-didattiche-regione-veneto-1.jpg" alt="Fattorie didattiche Regione Veneto">
-      <img src="https://www.ilbettone.com/wp-content/uploads/2023/02/Regione_Veneto_marchio-turistico.png" alt="Veneto marchio turistico">
-    </div>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <svg class="footer__hills" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 204 V120 C 140 60 260 40 400 80 C 520 114 600 40 760 30 C 900 22 980 110 1120 100 C 1260 90 1340 30 1460 50 C 1530 62 1580 90 1600 100 V204Z" fill="#7f2a16"/>
+    <path d="M0 120 C 140 60 260 40 400 80 C 520 114 600 40 760 30 C 900 22 980 110 1120 100 C 1260 90 1340 30 1460 50 C 1530 62 1580 90 1600 100" fill="none" stroke="#4a1a0e" stroke-width="5" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <div class="footer__walk" aria-hidden="true">
+    <svg class="walker" viewBox="0 0 80 70"><g stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path class="leg leg--a" d="M28 48 V64" fill="none" stroke-width="6"/><path class="leg leg--b" d="M52 48 V64" fill="none" stroke-width="6"/><path d="M16 36 a12 12 0 0 1 10 -18 a14 14 0 0 1 24 -6 a14 14 0 0 1 22 8 a12 12 0 0 1 4 22 a12 12 0 0 1 -14 12 a14 14 0 0 1 -22 0 a12 12 0 0 1 -24 -18z" fill="#fff"/><ellipse cx="72" cy="28" rx="11" ry="14" fill="#4a1a0e"/></g></svg>
   </div>
-  <div class="footer__big" aria-hidden="true"><span class="js-split-chars-footer">IL BETTONE</span></div>
-  <div class="footer__bottom">
-    <span>Via Bettone 17 – 35037 Teolo (PD)</span>
-    <span>P.IVA / C.F. 05196320286</span>
-    <a href="#top" class="totop" data-hover>Torna su ↑</a>
+  <div class="footer__inner">
+    <div class="footer__cols">
+      <div>
+        <p class="footer__k">Il Bettone</p>
+        <p>Via Bettone 17<br>35037 Teolo (PD)<br>P.IVA/CF 05196320286</p>
+      </div>
+      <div>
+        <p class="footer__k">Contatti</p>
+        <p><a href="mailto:info@ilbettone.com">info@ilbettone.com</a><br><a href="tel:+393402680393">340 268 0393</a><br><a href="https://www.instagram.com/ilbettone/" target="_blank" rel="noopener">Instagram</a></p>
+      </div>
+      <div>
+        <p class="footer__k">Esplora</p>
+        <p><a href="#fattoria">Fattoria</a><br><a href="#spuntini">Spuntini</a><br><a href="#alloggio">Alloggio</a><br><a href="#chi-siamo">Chi siamo</a></p>
+      </div>
+      <div class="footer__logos">
+        <img src="assets/img/fattorie-didattiche.jpg" alt="Fattorie Didattiche — Regione del Veneto" loading="lazy">
+        <img src="assets/img/veneto.png" alt="Veneto — The Land of Venice" loading="lazy">
+      </div>
+    </div>
+    <p class="footer__big" aria-hidden="true"><span>I</span><span>L</span><span>B</span><span>E</span><span>T</span><span>T</span><span>O</span><span>N</span><span>E</span></p>
+    <div class="footer__bar">
+      <p>© <span class="js-year">2026</span> Il Bettone · in partnership con Gate 11</p>
+      <p><a href="https://www.ilbettone.com/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></p>
+      <a href="#top" class="footer__top" data-magnetic>Torna su ↑</a>
+    </div>
   </div>
 </footer>
 

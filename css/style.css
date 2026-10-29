@@ -508,12 +508,13 @@ body::before {
    ========================================================= */
 .footer { position: relative; background: var(--brown); color: var(--cream); padding: 4rem var(--gut) 2rem; margin-top: -1px; }
 .footer__hills { position: absolute; left: 0; bottom: calc(100% - 2px); width: 100%; height: clamp(70px, 12vw, 200px); }
-.footer__walk { position: absolute; left: 0; right: 0; top: -2.6rem; height: 60px; pointer-events: none; overflow: hidden; }
-.walker { position: absolute; left: 0; bottom: 0; width: 64px; animation: walk 22s linear infinite; }
-.walker .leg { transform-box: fill-box; transform-origin: 50% 0; animation: step .5s ease-in-out infinite alternate; }
-.walker .leg--b { animation-direction: alternate-reverse; }
-@keyframes walk { from { transform: translateX(-80px); } to { transform: translateX(calc(100vw + 20px)); } }
-@keyframes step { from { transform: rotate(-18deg); } to { transform: rotate(18deg); } }
+.footer__hills { z-index: 2; }
+.footer__animals { --h: clamp(70px, 12vw, 200px); position: absolute; left: 0; right: 0; bottom: 100%; height: calc(var(--h) + 200px); z-index: 1; pointer-events: none; overflow: hidden; }
+.fa { position: absolute; height: auto; }
+.fa--cow { left: 13%; width: clamp(64px, 7.5vw, 130px); bottom: calc(var(--h) * .72 - 10px); }
+.fa--calf { left: 25%; width: clamp(50px, 5.6vw, 96px); bottom: calc(var(--h) * .6 - 8px); }
+.fa--foal { left: 60%; width: clamp(56px, 6.4vw, 110px); bottom: calc(var(--h) * .47 - 8px); }
+.fa--horse { right: 9%; width: clamp(80px, 9.5vw, 160px); bottom: calc(var(--h) * .77 - 10px); }
 .footer__inner { position: relative; }
 .footer__cols { display: grid; grid-template-columns: repeat(3, 1fr) 1.4fr; gap: 2rem; padding-bottom: 3rem; }
 .footer__k { font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--sun); margin-bottom: .8rem; }

@@ -494,6 +494,10 @@
     yPercent: 100, rotate: (i) => (i % 2 ? 10 : -10), ease: "back.out(1.6)", stagger: 0.04,
     scrollTrigger: { trigger: ".footer__big", start: "top bottom", end: "bottom bottom", scrub: 1 },
   });
+  gsap.from(".fa", {
+    yPercent: 110, ease: "power2.out", stagger: 0.12,
+    scrollTrigger: { trigger: ".footer", start: "top bottom", end: "top 45%", scrub: 1 },
+  });
   gsap.from(".footer__hills", { scaleY: 0.2, transformOrigin: "50% 100%", ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "top 50%", scrub: true } });
 
   // i cambi colore vanno creati dopo i pin, così le posizioni tengono conto dello spazio aggiunto

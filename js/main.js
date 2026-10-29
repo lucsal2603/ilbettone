@@ -8,6 +8,7 @@
   const body = document.body;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const mobile = matchMedia("(max-width: 700px)").matches;
 
   $(".js-year").textContent = new Date().getFullYear();
 
@@ -404,7 +405,7 @@
   const cards = $$(".stack__card");
   cards.forEach((c, i) => {
     const next = cards[i + 1];
-    if (!next) return;
+    if (!next || mobile) return; // su mobile le carte sono una semplice lista
     gsap.to(c, {
       scale: 0.9 + i * 0.02, rotate: i % 2 ? 1.5 : -1.5, ease: "none",
       scrollTrigger: { trigger: next, start: "top bottom", end: "top 20%", scrub: true },
@@ -418,7 +419,7 @@
   $$(".reveal-img").forEach((f) => {
     gsap.fromTo(f, { "--ct": "100%" }, { "--ct": "0%", duration: 1.4, ease: "power4.inOut", scrollTrigger: { trigger: f, start: "top 85%" } });
   });
-  $$(".snacks [data-speed]").forEach((el) => {
+  if (!mobile) $$(".snacks [data-speed]").forEach((el) => {
     const s = parseFloat(el.dataset.speed);
     gsap.to(el, {
       y: () => -s * 120, ease: "none",

@@ -401,7 +401,7 @@ body::before {
 .sticker--jam { top: 34%; left: 2%; }
 .sticker--bread { top: 52%; right: 2%; width: clamp(90px, 10vw, 160px); }
 .sticker--salami { top: 88%; right: 18%; width: clamp(90px, 10vw, 160px); }
-.sticker--wine { top: 14%; right: -3%; width: clamp(50px, 5vw, 80px); }
+.sticker--wine { top: 14%; right: 0; width: clamp(50px, 5vw, 80px); }
 .sticker--carrot { top: 92%; left: 44%; }
 
 /* =========================================================
@@ -606,4 +606,54 @@ body::before {
   .contact__title .hand { --cr: 0%; }
   .team__deck { height: auto; display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; }
   .polaroid { position: relative; left: auto; top: auto; margin: 0; }
+}
+
+/* =========================================================
+   SMARTPHONE — rifinitura sezione per sezione
+   ========================================================= */
+@media (max-width: 700px) {
+  /* header: tutto dentro lo schermo */
+  .header { padding: .8rem 1rem; }
+  .header.is-scrolled { padding-block: .7rem; }
+  .header__right { gap: .5rem; }
+  .header__logo { height: 42px; padding: 0 .85rem; }
+  .logo-mark { width: 100px; }
+  .header__cta { padding: .75em 1em .55em; font-size: .7rem; }
+  .burger { width: 44px; height: 44px; }
+  .burger i { left: 12px; right: 12px; }
+  .burger i:first-child { top: 16px; } .burger i:last-child { top: 24px; }
+  .menu-open .burger i:first-child, .menu-open .burger i:last-child { top: 20px; }
+
+  /* fattoria: niente linea e scritta di sfondo sopra il testo */
+  .farm__path, .farm__ghost { display: none; }
+  .farm__track { gap: 1.4rem; padding-right: 1.2rem; }
+  .farm__intro { width: 84vw; }
+  .farm__intro .lead { font-size: 1.05rem; }
+
+  /* fattoria didattica: carte in lista, compatte */
+  .stack__card { position: relative; top: auto; height: auto; grid-template-columns: 1fr; grid-template-rows: auto 210px; margin-bottom: 1.4rem; border-radius: 26px; transform: none !important; }
+  .stack__txt { justify-content: flex-start; padding: 1.6rem 1.4rem 1.8rem; }
+  .stack__ico { position: absolute; top: 1.3rem; right: 1.3rem; left: auto; width: 54px; z-index: 2; }
+  .stack__txt { grid-row: 1; }
+  .stack__photo { grid-row: 2; height: 210px; }
+  .stack__txt h3 { font-size: 2.3rem; margin: 0 0 .8rem; padding-right: 64px; }
+  .learn__cta { margin-top: 3rem; }
+
+  /* spuntini: immagini in colonna, niente adesivi sparsi */
+  .snacks { overflow: hidden; padding-top: 14vh; }
+  .snacks__media { height: auto; display: grid; gap: 1.4rem; margin-top: 3.5rem; }
+  .snacks__img { position: relative; top: auto; left: auto; right: auto; width: 100%; transform: none !important; }
+  .snacks__img--a { aspect-ratio: 4 / 5; border-radius: 200px 200px 26px 26px; }
+  .snacks__img--b, .snacks__img--c { aspect-ratio: 4 / 3; border-radius: 26px; }
+  .sticker { display: none; }
+  .badge { top: -2.4rem; right: -.4rem; width: 108px; }
+
+  /* zoom della villa: solo la villa, senza foto accavallate */
+  .zoom__el:nth-child(n+2) { display: none; }
+  .zoom__title { font-size: 3.4rem; }
+
+  /* chi siamo e contatti: un po' più di respiro */
+  .team { padding-top: 14vh; }
+  .contact { padding-top: 14vh; }
+  .contact__title { font-size: 3.6rem; }
 }

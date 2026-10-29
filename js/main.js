@@ -490,6 +490,12 @@
     scrollTrigger: { trigger: ".panels", start: "top 85%" },
   });
 
+  /* ---------------- CHI SIAMO → CONTATTI: la sezione si ferma e "Vieni a trovarci" sale sopra ---------------- */
+  ScrollTrigger.create({ trigger: ".team", start: "bottom bottom", endTrigger: ".contact", end: "top top", pin: true, pinSpacing: false });
+  gsap.timeline({ scrollTrigger: { trigger: ".contact", start: "top bottom", end: "top top", scrub: true } })
+    .to(".team", { "--dim": 0.45, ease: "none" }, 0)
+    .to(".team__head, .team__deck", { scale: 0.9, yPercent: -4, transformOrigin: "50% 100%", ease: "none" }, 0);
+
   /* ---------------- CHI SIAMO: polaroid a ventaglio ---------------- */
   const mmTeam = gsap.matchMedia();
   mmTeam.add("(min-width: 701px)", () => {

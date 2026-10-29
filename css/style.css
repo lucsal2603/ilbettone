@@ -147,15 +147,11 @@ body::before {
   color: var(--fg);
   transition: padding .4s var(--ease), color .4s, background .4s, box-shadow .4s;
 }
-.header::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 2.5px solid var(--ink);
-  transform: translateY(-101%); transition: transform .5s var(--ease);
-}
-.header.is-scrolled { padding-block: .7rem; }
-.header.is-scrolled::before { transform: none; }
+.header.is-scrolled { padding-block: .8rem; }
+/* niente barra: logo e icona hanno una capsula propria, come il menu */
+.header__logo { padding: .55em .9em .4em; border-radius: 999px; transition: background .4s, box-shadow .4s; }
+.header.is-scrolled .header__logo { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 0 0 2px currentColor; }
+.header.is-scrolled .header__ig { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .header.on-video:not(.is-scrolled) { color: var(--cream); }
 .header.on-video:not(.is-scrolled) .header__nav { background: rgba(74,26,14,.28); }
 .header__logo { font-weight: 700; font-size: clamp(1.25rem, 1rem + 1vw, 1.9rem); letter-spacing: .02em; line-height: 1; padding-top: .15em; }
@@ -457,7 +453,8 @@ body::before {
 /* =========================================================
    CHI SIAMO
    ========================================================= */
-.team { padding: 18vh var(--gut) 14vh; overflow: hidden; }
+.team { position: relative; padding: 18vh var(--gut) 14vh; overflow: hidden; background: var(--leaf); --dim: 0; }
+.team::after { content: ""; position: absolute; inset: 0; background: var(--ink); opacity: var(--dim); pointer-events: none; z-index: 6; }
 .team__head { max-width: 900px; }
 .team__deck { position: relative; height: max(86vh, 700px); margin-top: 6vh; }
 .polaroid {
@@ -481,7 +478,14 @@ body::before {
 /* =========================================================
    CONTATTI
    ========================================================= */
-.contact { padding: 18vh var(--gut) 30vh; color: var(--ink); overflow: hidden; }
+.contact {
+  position: relative; z-index: 3; padding: 22vh var(--gut) 30vh; color: var(--ink); overflow: hidden;
+  background: var(--olive);
+  /* bordo superiore ad arco */
+  border-top-left-radius: 50% clamp(60px, 12vw, 220px);
+  border-top-right-radius: 50% clamp(60px, 12vw, 220px);
+  box-shadow: 0 -3px 0 var(--ink);
+}
 .contact__title { font-size: clamp(3.6rem, 12vw, 12.5rem); font-weight: 700; text-transform: uppercase; line-height: .82; letter-spacing: -.04em; padding-top: .08em; }
 .contact__title .hand { display: inline-block; font-size: 1.05em; color: var(--brown); text-transform: none; letter-spacing: 0; margin-left: .2em; line-height: 1.1; padding-right: .2em; --cr: 100%; clip-path: inset(0 var(--cr) 0 0); }
 .contact__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 5vw; margin-top: 10vh; align-items: start; }

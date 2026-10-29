@@ -118,12 +118,10 @@
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
     tl.fromTo(".hero__media", { scale: 1.25 }, { scale: 1, duration: 2.2, ease: "power3.out" }, 0)
       .from(".hero__ground", { yPercent: 100, duration: 1.4 }, 0.2)
-      .from(".hero__deco > *", { y: 60, opacity: 0, duration: 1.2, ease: "power3.out", stagger: 0.1 }, 0.6)
       .from(".hl", { yPercent: -160, rotate: () => gsap.utils.random(-25, 25), opacity: 0, duration: 1.2, ease: "bounce.out", stagger: 0.06, clearProps: "transform", onComplete: () => { lettersReady = true; } }, 0.35)
       .from(".hero__kicker span", { y: 30, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.9)
       .from(".hero__place", { scale: 0, rotate: -10, duration: 0.8, ease: "back.out(2.5)" }, 1.1)
-      .from(".header > *", { y: -30, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.8)
-      .from(".hero__scroll", { opacity: 0, y: 20, duration: 0.8 }, 1.4);
+      .from(".header > *", { y: -30, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.8);
     return tl;
   }
 
@@ -296,8 +294,7 @@
   heroTl
     .to(".hero__video", { yPercent: 18, scale: 1.08 }, 0)
     .to(".hero__content", { yPercent: -45, opacity: 0 }, 0)
-    .to(".hero__scroll", { opacity: 0, duration: 0.2 }, 0)
-    .to(".hero__deco", { yPercent: -30 }, 0);
+    ;
 
   const video = $(".hero__video");
   ScrollTrigger.create({

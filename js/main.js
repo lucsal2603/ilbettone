@@ -317,10 +317,15 @@
   /* ---------------- MANIFESTO: parole che si accendono ---------------- */
   const words = $$(".manifesto__text .w");
   gsap.set(words, { opacity: 0.12 });
-  gsap.to(words, {
-    opacity: 1, ease: "none", stagger: 0.1,
-    scrollTrigger: { trigger: ".manifesto__text", start: "top 75%", end: "bottom 45%", scrub: 1 },
-  });
+  // la frase si ferma al centro dello schermo mentre le parole si accendono
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: ".manifesto__text", start: "center center", end: () => "+=" + window.innerHeight * 1.3,
+      pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
+    },
+  })
+    .to(words, { opacity: 1, ease: "none", stagger: 0.1 })
+    .to({}, { duration: 0.6 });
   $$(".manifesto .pill").forEach((p) => {
     gsap.from(p, { scale: 0, rotate: -20, duration: 0.8, ease: "back.out(2.5)", scrollTrigger: { trigger: p, start: "top 78%", toggleActions: "play none none reverse" } });
   });

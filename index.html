@@ -239,8 +239,9 @@
               <g fill="#4a1a0e"><rect x="88" y="140" width="13" height="52" rx="6"/><rect x="114" y="144" width="13" height="50" rx="6"/><rect x="160" y="144" width="13" height="50" rx="6"/><rect x="184" y="140" width="13" height="52" rx="6"/></g>
               <path class="sheep__wool" d="M76 112 a22 22 0 0 1 18 -36 a26 26 0 0 1 44 -14 a26 26 0 0 1 46 6 a22 22 0 0 1 26 34 a22 22 0 0 1 -14 38 a26 26 0 0 1 -44 8 a26 26 0 0 1 -46 -2 a22 22 0 0 1 -30 -34z" fill="#fff"/>
               <g class="sheep__head">
+                <path d="M42 86 C 30 80 16 84 14 94 C 18 102 32 100 42 94 Z" fill="#e2c495"/>
+                <path d="M90 86 C 102 80 116 84 118 94 C 114 102 100 100 90 94 Z" fill="#e2c495"/>
                 <ellipse cx="66" cy="100" rx="28" ry="30" fill="#f3e1bd"/>
-                <ellipse cx="40" cy="92" rx="16" ry="8" transform="rotate(20 40 92)" fill="#f3e1bd"/>
                 <g class="blink"><circle cx="56" cy="98" r="5" fill="#4a1a0e" stroke="none"/><circle cx="78" cy="98" r="5" fill="#4a1a0e" stroke="none"/></g>
                 <path d="M60 114 q6 6 12 0" fill="none"/>
               </g>
@@ -457,40 +458,37 @@
       <a href="#contatti" class="btn btn--line" data-magnetic data-topic="Alloggio">Chiedi disponibilità</a>
     </div>
   </div>
-  <div class="rooms">
-    <div class="rooms__head">
-      <h3 class="rooms__title">Gli spazi <em class="hand">della villa</em></h3>
-      <div class="rooms__nav">
-        <button class="rooms__btn" data-dir="-1" aria-label="Foto precedente" data-magnetic>←</button>
-        <button class="rooms__btn" data-dir="1" aria-label="Foto successiva" data-magnetic>→</button>
-      </div>
-    </div>
-    <div class="rooms__track" tabindex="0" aria-label="Galleria degli spazi della villa">
-      <figure class="room">
-        <div class="room__img"><img src="assets/img/alloggio-06.webp" alt="Una camera con il letto in legno" loading="lazy" draggable="false"></div>
-        <figcaption><h3>Le camere</h3><p>Letti in legno antico, pavimenti in legno e muri in pietra.</p></figcaption>
-      </figure>
-      <figure class="room">
-        <div class="room__img"><img src="assets/img/alloggio-04.webp" alt="Il bagno con i muri in pietra" loading="lazy" draggable="false"></div>
-        <figcaption><h3>Il bagno</h3><p>Pietra a vista e una finestra aperta sul verde.</p></figcaption>
-      </figure>
-      <figure class="room">
-        <div class="room__img"><img src="assets/img/alloggio-13.webp" alt="La cucina con i muri in pietra" loading="lazy" draggable="false"></div>
-        <figcaption><h3>La cucina</h3><p>Travi in legno, pietra e una grande tavola rotonda.</p></figcaption>
-      </figure>
-      <figure class="room">
-        <div class="room__img"><img src="assets/img/alloggio-14.webp" alt="Il soggiorno con il pianoforte e la scala" loading="lazy" draggable="false"></div>
-        <figcaption><h3>Il soggiorno</h3><p>Il pianoforte, la scala e la luce che entra dalla porta.</p></figcaption>
-      </figure>
-      <figure class="room">
-        <div class="room__img"><img src="assets/img/yoga.webp" alt="Il prato della villa" loading="lazy" draggable="false"></div>
-        <figcaption><h3>Il prato</h3><p>All'ombra dei grandi alberi, davanti alla villa.</p></figcaption>
-      </figure>
-      <figure class="room">
-        <div class="room__img"><img src="assets/img/panorama.webp" alt="Panorama sui Colli Euganei" loading="lazy" draggable="false"></div>
-        <figcaption><h3>La vista</h3><p>I Colli Euganei tutto intorno.</p></figcaption>
-      </figure>
-    </div>
+  <div class="panels">
+    <button class="panel is-open" type="button" aria-expanded="true">
+      <img src="assets/img/alloggio-06.webp" alt="Una camera con il letto in legno" loading="lazy" draggable="false">
+      <span class="panel__label">Le camere</span>
+      <span class="panel__body"><span class="panel__title">Le camere</span><span class="panel__text">Letti in legno antico, pavimenti in legno e muri in pietra.</span></span>
+    </button>
+    <button class="panel" type="button" aria-expanded="false">
+      <img src="assets/img/alloggio-04.webp" alt="Il bagno con i muri in pietra" loading="lazy" draggable="false">
+      <span class="panel__label">Il bagno</span>
+      <span class="panel__body"><span class="panel__title">Il bagno</span><span class="panel__text">Pietra a vista e una finestra aperta sul verde.</span></span>
+    </button>
+    <button class="panel" type="button" aria-expanded="false">
+      <img src="assets/img/alloggio-13.webp" alt="La cucina con i muri in pietra" loading="lazy" draggable="false">
+      <span class="panel__label">La cucina</span>
+      <span class="panel__body"><span class="panel__title">La cucina</span><span class="panel__text">Travi in legno, pietra e una grande tavola rotonda.</span></span>
+    </button>
+    <button class="panel" type="button" aria-expanded="false">
+      <img src="assets/img/alloggio-14.webp" alt="Il soggiorno con il pianoforte e la scala" loading="lazy" draggable="false">
+      <span class="panel__label">Il soggiorno</span>
+      <span class="panel__body"><span class="panel__title">Il soggiorno</span><span class="panel__text">Il pianoforte, la scala e la luce che entra dalla porta.</span></span>
+    </button>
+    <button class="panel" type="button" aria-expanded="false">
+      <img src="assets/img/yoga.webp" alt="Il prato della villa" loading="lazy" draggable="false">
+      <span class="panel__label">Il prato</span>
+      <span class="panel__body"><span class="panel__title">Il prato</span><span class="panel__text">All'ombra dei grandi alberi, davanti alla villa.</span></span>
+    </button>
+    <button class="panel" type="button" aria-expanded="false">
+      <img src="assets/img/panorama.webp" alt="Panorama sui Colli Euganei" loading="lazy" draggable="false">
+      <span class="panel__label">La vista</span>
+      <span class="panel__body"><span class="panel__title">La vista</span><span class="panel__text">I Colli Euganei tutto intorno.</span></span>
+    </button>
   </div>
 </section>
 
@@ -562,10 +560,6 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <svg class="footer__hills" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 204 V120 C 140 60 260 40 400 80 C 520 114 600 40 760 30 C 900 22 980 110 1120 100 C 1260 90 1340 30 1460 50 C 1530 62 1580 90 1600 100 V204Z" fill="#7f2a16"/>
-    <path d="M0 120 C 140 60 260 40 400 80 C 520 114 600 40 760 30 C 900 22 980 110 1120 100 C 1260 90 1340 30 1460 50 C 1530 62 1580 90 1600 100" fill="none" stroke="#4a1a0e" stroke-width="5" vector-effect="non-scaling-stroke"/>
-  </svg>
   <div class="footer__animals" aria-hidden="true">
     <img class="fa fa--cow" src="assets/img/animale-cow.webp" alt="" loading="lazy">
     <img class="fa fa--calf" src="assets/img/animale-calf.webp" alt="" loading="lazy">

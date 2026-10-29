@@ -119,7 +119,7 @@
     tl.fromTo(".hero__media", { scale: 1.25 }, { scale: 1, duration: 2.2, ease: "power3.out" }, 0)
       .from(".hero__ground", { yPercent: 100, duration: 1.4 }, 0.2)
       .from(".hero__deco > *", { y: 60, opacity: 0, duration: 1.2, ease: "power3.out", stagger: 0.1 }, 0.6)
-      .from(".hl", { yPercent: -160, rotate: () => gsap.utils.random(-25, 25), opacity: 0, duration: 1.2, ease: "bounce.out", stagger: 0.06 }, 0.35)
+      .from(".hl", { yPercent: -160, rotate: () => gsap.utils.random(-25, 25), opacity: 0, duration: 1.2, ease: "bounce.out", stagger: 0.06, clearProps: "transform", onComplete: () => { lettersReady = true; } }, 0.35)
       .from(".hero__kicker span", { y: 30, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.9)
       .from(".hero__place", { scale: 0, rotate: -10, duration: 0.8, ease: "back.out(2.5)" }, 1.1)
       .from(".header > *", { y: -30, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.8)
@@ -201,10 +201,17 @@
     });
   }
 
-  // lettere del titolo che "rimbalzano" al passaggio
+  // lettere del titolo che saltano al passaggio: un salto alla volta, solo dopo l'ingresso
+  let lettersReady = reduce;
   $$(".hl").forEach((l) => {
+    let busy = false;
     l.addEventListener("mouseenter", () => {
-      gsap.fromTo(l, { scaleY: 0.7, scaleX: 1.25 }, { scaleX: 1, scaleY: 1, duration: 1, ease: "elastic.out(1.2, 0.3)", overwrite: "auto" });
+      if (!lettersReady || busy) return;
+      busy = true;
+      gsap.timeline({ onComplete: () => { busy = false; } })
+        .to(l, { scaleX: 1.12, scaleY: 0.86, duration: 0.1, ease: "power2.out" })
+        .to(l, { y: "-0.22em", scaleX: 0.94, scaleY: 1.08, duration: 0.24, ease: "power2.out" })
+        .to(l, { y: 0, scaleX: 1, scaleY: 1, duration: 0.5, ease: "bounce.out" });
     });
   });
 
@@ -478,9 +485,9 @@
   let rw;
   addEventListener("resize", () => { clearTimeout(rw); rw = setTimeout(() => { stayText.textContent = stayText.getAttribute("aria-label"); buildStay(); }, 250); });
 
-  gsap.from(".room", {
-    y: 80, opacity: 0, duration: 1.1, ease: "power3.out", stagger: 0.1,
-    scrollTrigger: { trigger: ".rooms__track", start: "top 85%" },
+  gsap.from(".panel", {
+    y: 100, opacity: 0, duration: 1.1, ease: "power3.out", stagger: 0.08,
+    scrollTrigger: { trigger: ".panels", start: "top 85%" },
   });
 
   /* ---------------- CHI SIAMO: polaroid a ventaglio ---------------- */
@@ -512,11 +519,11 @@
     yPercent: 100, rotate: (i) => (i % 2 ? 10 : -10), ease: "back.out(1.6)", stagger: 0.04,
     scrollTrigger: { trigger: ".footer__big", start: "top bottom", end: "bottom bottom", scrub: 1 },
   });
+  // gli animali salgono da dietro il bordo dritto del footer
   gsap.from(".fa", {
-    yPercent: 110, ease: "power2.out", stagger: 0.12,
-    scrollTrigger: { trigger: ".footer", start: "top bottom", end: "top 45%", scrub: 1 },
+    yPercent: 104, ease: "power3.out", duration: 1.1, stagger: 0.12,
+    scrollTrigger: { trigger: ".footer", start: "top 92%", toggleActions: "play none none reverse" },
   });
-  gsap.from(".footer__hills", { scaleY: 0.2, transformOrigin: "50% 100%", ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "top 50%", scrub: true } });
 
   // i cambi colore vanno creati dopo i pin, così le posizioni tengono conto dello spazio aggiunto
   themeTriggers();
@@ -550,46 +557,18 @@
   });
 })();
 
-/* ---------------- GALLERIA SPAZI: frecce e trascinamento ---------------- */
+/* ---------------- SPAZI DELLA VILLA: pannelli che si allargano ---------------- */
 (() => {
-  const track = document.querySelector(".rooms__track");
-  if (!track) return;
-  const btns = document.querySelectorAll(".rooms__btn");
-  const step = () => {
-    const card = track.querySelector(".room");
-    return card.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
-  };
-  const update = () => {
-    btns[0].disabled = track.scrollLeft <= 4;
-    btns[1].disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
-  };
-  btns.forEach((b) => b.addEventListener("click", () => track.scrollBy({ left: step() * +b.dataset.dir, behavior: "smooth" })));
-  track.addEventListener("scroll", update, { passive: true });
-  addEventListener("resize", update);
-  update();
-
-  let down = false, startX = 0, startLeft = 0, moved = false;
-  track.addEventListener("pointerdown", (e) => {
-    if (e.pointerType !== "mouse") return;
-    down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+  const panels = [...document.querySelectorAll(".panel")];
+  if (!panels.length) return;
+  const hover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const open = (p) => panels.forEach((x) => {
+    x.classList.toggle("is-open", x === p);
+    x.setAttribute("aria-expanded", x === p ? "true" : "false");
   });
-  addEventListener("pointermove", (e) => {
-    if (!down) return;
-    const dx = e.clientX - startX;
-    if (Math.abs(dx) > 4) { moved = true; track.classList.add("is-drag"); }
-    track.scrollLeft = startLeft - dx;
-  });
-  addEventListener("pointerup", () => {
-    if (!down) return;
-    down = false;
-    if (moved) {
-      // riaggancia alla scheda più vicina
-      const left = track.scrollLeft;
-      track.classList.remove("is-drag");
-      track.scrollLeft = left;
-      const s = step();
-      track.scrollTo({ left: Math.round(left / s) * s, behavior: "smooth" });
-    }
+  panels.forEach((p) => {
+    p.addEventListener("click", () => open(p));
+    p.addEventListener("focus", () => open(p));
+    if (hover) p.addEventListener("mouseenter", () => open(p));
   });
 })();
-

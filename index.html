@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f7f1e1">
 <meta property="og:title" content="Il Bettone — Fattoria, Alloggio, Spuntini">
 <meta property="og:description" content="Otto ettari di terra nel Parco dei Colli Euganei. Animali liberi, una villa del '700, i prodotti della fattoria.">
-<meta property="og:image" content="assets/img/villa.webp">
+<meta property="og:image" content="assets/img/alloggio-11.webp">
 <link rel="icon" href="assets/img/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
 <div class="progress" aria-hidden="true"><i></i></div>
 
 <!-- ============ HEADER ============ -->
-<header class="header">
+<header class="header on-video">
   <a href="#top" class="header__logo" data-magnetic aria-label="Il Bettone, torna all'inizio">IL<b>BETTONE</b></a>
   <nav class="header__nav" aria-label="Principale">
     <a href="#fattoria" class="roll"><span data-t="Fattoria">Fattoria</span></a>
@@ -70,7 +70,7 @@
     <nav class="menu__links">
       <a href="#fattoria" data-img="assets/img/pecore.webp"><small>01</small><span>Fattoria</span></a>
       <a href="#spuntini" data-img="assets/img/tagliatelle.webp"><small>02</small><span>Spuntini</span></a>
-      <a href="#alloggio" data-img="assets/img/villa.webp"><small>03</small><span>Alloggio</span></a>
+      <a href="#alloggio" data-img="assets/img/alloggio-11.webp"><small>03</small><span>Alloggio</span></a>
       <a href="#chi-siamo" data-img="assets/img/orto.webp"><small>04</small><span>Chi siamo</span></a>
       <a href="#contatti" data-img="assets/img/albero.webp"><small>05</small><span>Contatti</span></a>
     </nav>
@@ -87,120 +87,38 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" data-theme="cream" aria-label="Il Bettone">
-  <div class="hero__sticky">
-    <!-- cielo -->
-    <svg class="hero__layer hero__sky" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <g class="sun" transform="translate(1260 210)">
-        <g class="sun__rays" stroke="#4a1a0e" stroke-width="5" stroke-linecap="round">
-          <path d="M0 -118 V-96"/><path d="M0 96 V118"/><path d="M-118 0 H-96"/><path d="M96 0 H118"/>
-          <path d="M-83 -83 L-68 -68"/><path d="M68 68 L83 83"/><path d="M-83 83 L-68 68"/><path d="M68 -68 L83 -83"/>
-        </g>
-        <circle r="74" fill="#f2b632" stroke="#4a1a0e" stroke-width="5"/>
-        <path d="M-26 -8 q8 -10 16 0 M10 -8 q8 -10 16 0" fill="none" stroke="#4a1a0e" stroke-width="5" stroke-linecap="round"/>
-        <path d="M-22 18 q22 22 44 0" fill="none" stroke="#4a1a0e" stroke-width="5" stroke-linecap="round"/>
-        <ellipse cx="-40" cy="14" rx="10" ry="6" fill="#f08a5d" opacity=".7"/><ellipse cx="40" cy="14" rx="10" ry="6" fill="#f08a5d" opacity=".7"/>
-      </g>
-      <g fill="#fff" stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round">
-        <path class="cloud cloud--1" d="M180 210 a34 34 0 0 1 48 -32 a46 46 0 0 1 86 -2 a32 32 0 0 1 46 34 z"/>
-        <path class="cloud cloud--2" d="M640 140 a28 28 0 0 1 40 -26 a38 38 0 0 1 70 0 a26 26 0 0 1 36 26 z"/>
-        <path class="cloud cloud--3" d="M960 330 a30 30 0 0 1 42 -28 a42 42 0 0 1 78 -2 a28 28 0 0 1 40 30 z"/>
-      </g>
-      <g class="birds" fill="none" stroke="#4a1a0e" stroke-width="4" stroke-linecap="round">
-        <path d="M480 260 q12 -12 24 0 q12 -12 24 0"/><path d="M540 300 q9 -9 18 0 q9 -9 18 0"/>
-      </g>
-    </svg>
-
-    <!-- colline lontane -->
-    <svg class="hero__layer hero__far" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <path d="M0 620 C 120 560 200 470 300 470 C 390 470 430 560 520 560 C 600 560 640 420 760 410 C 880 400 910 540 1000 545 C 1090 550 1120 450 1220 440 C 1330 430 1380 560 1480 560 C 1540 560 1580 530 1600 520 L1600 900 L0 900Z" fill="#c9dba8" stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round"/>
-    </svg>
-
-    <!-- colline con la villa -->
-    <svg class="hero__layer hero__mid" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M0 700 C 150 690 250 600 380 590 C 470 583 520 640 600 640 C 680 640 720 500 800 470 C 860 448 900 470 940 520 C 990 580 1050 640 1150 640 C 1250 640 1320 590 1420 600 C 1500 608 1560 640 1600 650 L1600 900 L0 900Z" fill="#aabf48"/>
-        <g fill="none" stroke="#7d9524" stroke-width="7" stroke-dasharray="2 16">
-          <path d="M1010 640 C 1080 660 1160 660 1240 640"/><path d="M1000 670 C 1080 690 1170 690 1260 668"/><path d="M990 700 C 1080 722 1180 722 1280 698"/><path d="M985 732 C 1080 754 1190 754 1300 728"/>
-        </g>
-        <!-- villa -->
-        <g transform="translate(300 506)">
-          <rect x="112" y="-2" width="12" height="18" fill="#c4532d"/>
-          <path d="M-10 34 L10 10 H140 L160 34 Z" fill="#c4532d"/>
-          <rect x="0" y="32" width="150" height="62" fill="#f3e1bd"/>
-          <g fill="#4a1a0e" stroke="none">
-            <rect x="16" y="44" width="12" height="14" rx="2"/><rect x="48" y="44" width="12" height="14" rx="2"/><rect x="90" y="44" width="12" height="14" rx="2"/><rect x="122" y="44" width="12" height="14" rx="2"/>
-          </g>
-          <path d="M62 94 V76 a13 13 0 0 1 26 0 V94" fill="#7f2a16"/>
-          <path d="M14 94 V80 a9 9 0 0 1 18 0 V94 M118 94 V80 a9 9 0 0 1 18 0 V94" fill="#a8c4c4"/>
-        </g>
-        <g fill="#5d7a1c">
-          <path d="M478 600 c-14 -30 -10 -80 8 -98 c18 18 22 68 8 98 z"/>
-          <path d="M508 606 c-12 -26 -8 -66 6 -82 c14 16 18 56 6 82 z"/>
-          <path d="M268 604 c-12 -26 -8 -66 6 -82 c14 16 18 56 6 82 z"/>
-        </g>
-      </g>
-    </svg>
-
-    <!-- titolo, fra le colline -->
-    <div class="hero__title-wrap">
-      <p class="hero__kicker hand"><span>fattoria</span> · <span>alloggio</span> · <span>spuntini</span></p>
-      <h1 class="hero__title" aria-label="Il Bettone">
-        <span class="hl">I</span><span class="hl">L</span><span class="hl hl--sp"> </span><span class="hl">B</span><span class="hl">E</span><span class="hl">T</span><span class="hl">T</span><span class="hl">O</span><span class="hl">N</span><span class="hl">E</span>
-      </h1>
-      <p class="hero__place">Teolo · Parco dei Colli Euganei</p>
-    </div>
-
-    <!-- collina vicina con albero e pecore -->
-    <svg class="hero__layer hero__near" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M0 820 C 200 760 380 720 560 740 C 700 755 760 800 900 800 C 1050 800 1150 730 1320 720 C 1450 712 1540 740 1600 760 L1600 900 L0 900Z" fill="#8ea832"/>
-        <g class="tree">
-          <path d="M150 790 C 160 720 158 640 146 600 L 186 600 C 176 650 180 720 196 790 Z" fill="#7f4a26"/>
-          <path d="M150 640 C 120 620 100 610 84 590 M184 630 C 210 610 236 604 250 590" fill="none"/>
-          <g class="tree__crown" fill="#5d7a1c">
-            <circle cx="96" cy="560" r="62"/><circle cx="250" cy="560" r="62"/><circle cx="170" cy="500" r="80"/><circle cx="120" cy="470" r="56"/><circle cx="230" cy="470" r="56"/><circle cx="172" cy="580" r="58"/>
-          </g>
-          <g fill="#d6402f" stroke-width="3"><circle cx="128" cy="520" r="8"/><circle cx="214" cy="540" r="8"/><circle cx="182" cy="460" r="8"/><circle cx="100" cy="580" r="8"/></g>
-        </g>
-        <g class="fence" fill="#f3e1bd" stroke-width="4">
-          <path d="M960 790 C 1060 770 1160 744 1260 736" fill="none"/>
-          <path d="M970 812 V778 l6 -6 l6 6 V808 Z"/><path d="M1040 796 V762 l6 -6 l6 6 V792 Z"/><path d="M1110 780 V748 l6 -6 l6 6 V776 Z"/><path d="M1180 766 V734 l6 -6 l6 6 V762 Z"/>
-        </g>
-        <g class="hsheep hsheep--1" transform="translate(1330 680)">
-          <path d="M14 46 V64 M38 46 V64" fill="none" stroke-width="6"/>
-          <path d="M4 34 a12 12 0 0 1 10 -18 a14 14 0 0 1 24 -6 a14 14 0 0 1 22 8 a12 12 0 0 1 4 22 a12 12 0 0 1 -14 12 a14 14 0 0 1 -22 0 a12 12 0 0 1 -24 -18z" fill="#fff"/>
-          <ellipse cx="0" cy="26" rx="12" ry="15" fill="#4a1a0e"/>
-        </g>
-        <g class="hsheep hsheep--2" transform="translate(1440 700) scale(-.8 .8)">
-          <path d="M14 46 V64 M38 46 V64" fill="none" stroke-width="6"/>
-          <path d="M4 34 a12 12 0 0 1 10 -18 a14 14 0 0 1 24 -6 a14 14 0 0 1 22 8 a12 12 0 0 1 4 22 a12 12 0 0 1 -14 12 a14 14 0 0 1 -22 0 a12 12 0 0 1 -24 -18z" fill="#fff"/>
-          <ellipse cx="0" cy="26" rx="12" ry="15" fill="#4a1a0e"/>
-        </g>
-      </g>
-    </svg>
-
-    <!-- erba in primo piano -->
-    <svg class="hero__layer hero__front" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M0 900 L0 862 C 200 842 400 872 600 852 C 800 832 1000 872 1200 856 C 1400 840 1500 862 1600 852 L1600 900Z" fill="#6f8c25"/>
-        <g fill="none" stroke-width="4"><path d="M90 862 q-6 -24 -16 -34 M100 860 q2 -26 10 -36 M520 856 q-4 -22 -14 -30 M530 855 q4 -24 12 -32 M1020 864 q-6 -24 -16 -34 M1032 862 q2 -26 10 -36 M1460 850 q-4 -22 -14 -30"/></g>
-        <g class="flower"><path d="M300 852 V812" fill="none" stroke-width="4"/><g fill="#fff"><circle cx="300" cy="798" r="9"/><circle cx="314" cy="806" r="9"/><circle cx="286" cy="806" r="9"/><circle cx="292" cy="820" r="9"/><circle cx="308" cy="820" r="9"/></g><circle cx="300" cy="810" r="7" fill="#f2b632"/></g>
-        <g class="flower"><path d="M760 842 V806" fill="none" stroke-width="4"/><g fill="#f2b2a4"><circle cx="760" cy="792" r="8"/><circle cx="773" cy="800" r="8"/><circle cx="747" cy="800" r="8"/><circle cx="753" cy="813" r="8"/><circle cx="767" cy="813" r="8"/></g><circle cx="760" cy="804" r="6" fill="#f2b632"/></g>
-        <g class="flower"><path d="M1290 852 V814" fill="none" stroke-width="4"/><g fill="#fff"><circle cx="1290" cy="800" r="9"/><circle cx="1304" cy="808" r="9"/><circle cx="1276" cy="808" r="9"/><circle cx="1282" cy="822" r="9"/><circle cx="1298" cy="822" r="9"/></g><circle cx="1290" cy="812" r="7" fill="#f2b632"/></g>
-      </g>
-    </svg>
-
-    <!-- finestra video -->
-    <div class="hero__window">
-      <video class="hero__video" src="assets/video/bettone.mp4" poster="assets/img/poster.webp" muted loop playsinline preload="metadata"></video>
-      <p class="hero__caption"><span class="hand">benvenuti al</span><span>Bettone</span></p>
-    </div>
-
-    <a href="#manifesto" class="hero__scroll" aria-label="Scorri">
-      <span class="hand">scorri giù</span>
-      <svg viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2 V36 M3 27 L12 36 L21 27"/></svg>
-    </a>
+  <div class="hero__media">
+    <video class="hero__video" src="assets/video/bettone.mp4" poster="assets/img/poster.webp" autoplay muted loop playsinline preload="auto"></video>
   </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="hero__kicker hand"><span>fattoria</span> · <span>alloggio</span> · <span>spuntini</span></p>
+    <h1 class="hero__title" aria-label="Il Bettone">
+      <span class="hl">I</span><span class="hl">L</span><span class="hl hl--sp"> </span><span class="hl">B</span><span class="hl">E</span><span class="hl">T</span><span class="hl">T</span><span class="hl">O</span><span class="hl">N</span><span class="hl">E</span>
+    </h1>
+    <p class="hero__place">Teolo · Parco dei Colli Euganei</p>
+  </div>
+
+  <!-- dettagli disegnati sul bordo basso del video -->
+  <div class="hero__deco" aria-hidden="true">
+    <svg class="deco deco--flower deco--f1" viewBox="0 0 60 110"><g stroke="#4a1a0e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 108 V44 M30 80 q-16 -4 -20 -18 q14 0 20 12" fill="#6f8c25"/><g fill="#fff"><circle cx="30" cy="20" r="11"/><circle cx="46" cy="30" r="11"/><circle cx="14" cy="30" r="11"/><circle cx="20" cy="46" r="11"/><circle cx="40" cy="46" r="11"/></g><circle cx="30" cy="34" r="9" fill="#f2b632"/></g></svg>
+    <svg class="deco deco--sheep" viewBox="0 0 80 70"><g stroke="#4a1a0e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path class="leg leg--a" d="M28 48 V64" fill="none" stroke-width="6"/><path class="leg leg--b" d="M52 48 V64" fill="none" stroke-width="6"/><path d="M16 36 a12 12 0 0 1 10 -18 a14 14 0 0 1 24 -6 a14 14 0 0 1 22 8 a12 12 0 0 1 4 22 a12 12 0 0 1 -14 12 a14 14 0 0 1 -22 0 a12 12 0 0 1 -24 -18z" fill="#fff"/><ellipse cx="72" cy="28" rx="11" ry="14" fill="#4a1a0e"/><circle cx="75" cy="25" r="2.5" fill="#fff" stroke="none"/></g></svg>
+    <svg class="deco deco--flower deco--f2" viewBox="0 0 60 110"><g stroke="#4a1a0e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 108 V44 M30 84 q16 -4 20 -18 q-14 0 -20 12" fill="#6f8c25"/><g fill="#f4c3b8"><circle cx="30" cy="20" r="11"/><circle cx="46" cy="30" r="11"/><circle cx="14" cy="30" r="11"/><circle cx="20" cy="46" r="11"/><circle cx="40" cy="46" r="11"/></g><circle cx="30" cy="34" r="9" fill="#f2b632"/></g></svg>
+    <svg class="deco deco--butterfly" viewBox="0 0 60 50"><g stroke="#4a1a0e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path class="wing wing--l" d="M30 26 C 14 4 0 10 6 24 C 0 36 18 42 30 28z" fill="#f2b632"/><path class="wing wing--r" d="M30 26 C 46 4 60 10 54 24 C 60 36 42 42 30 28z" fill="#f2b632"/><path d="M30 14 V40" /></g></svg>
+    <svg class="deco deco--hen" viewBox="0 0 200 200"><g stroke="#4a1a0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M88 160 V190 M76 192 h24 M118 160 V190 M108 192 h22" fill="none" stroke="#e0a21e" stroke-width="7"/><path d="M60 108 C 60 70 106 60 132 86 L162 52 C 174 92 166 142 124 160 C 86 176 60 152 60 108z" fill="#c0602e"/><path d="M94 116 c20 -12 44 0 48 18 c-20 10 -38 6 -48 -18z" fill="#9a4520"/><g class="hen__head"><path d="M52 46 c0 -14 12 -14 12 -4 c2 -12 14 -10 12 2 c6 -8 14 -4 9 7z" fill="#d6402f"/><circle cx="70" cy="72" r="27" fill="#c0602e"/><path d="M44 70 l-18 6 l18 7z" fill="#f2b632"/><circle cx="62" cy="66" r="4.5" fill="#4a1a0e" stroke="none"/></g></g></svg>
+    <svg class="deco deco--fence" viewBox="0 0 220 90"><g stroke="#4a1a0e" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" fill="#f3e1bd"><path d="M6 40 H214 M6 62 H214" fill="none"/><path d="M14 90 V20 l10 -10 l10 10 V90z"/><path d="M84 90 V20 l10 -10 l10 10 V90z"/><path d="M154 90 V20 l10 -10 l10 10 V90z"/></g></svg>
+    <svg class="deco deco--flower deco--f3" viewBox="0 0 60 110"><g stroke="#4a1a0e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 108 V44 M30 80 q-16 -4 -20 -18 q14 0 20 12" fill="#6f8c25"/><g fill="#fff"><circle cx="30" cy="20" r="11"/><circle cx="46" cy="30" r="11"/><circle cx="14" cy="30" r="11"/><circle cx="20" cy="46" r="11"/><circle cx="40" cy="46" r="11"/></g><circle cx="30" cy="34" r="9" fill="#f2b632"/></g></svg>
+  </div>
+  <svg class="hero__ground" viewBox="0 0 1600 160" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 74 C 200 30 420 30 620 62 C 820 94 1020 104 1220 72 C 1370 50 1500 42 1600 58 V164 H0Z" style="fill:var(--bg)"/>
+    <path d="M0 74 C 200 30 420 30 620 62 C 820 94 1020 104 1220 72 C 1370 50 1500 42 1600 58" fill="none" stroke="#4a1a0e" stroke-width="5" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <a href="#manifesto" class="hero__scroll" aria-label="Scorri">
+    <span class="hand">scorri giù</span>
+    <svg viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2 V36 M3 27 L12 36 L21 27"/></svg>
+  </a>
 </section>
 
 <!-- ============ MANIFESTO ============ -->
@@ -241,6 +159,12 @@
         <p class="lead">Prima sono arrivate due vitelle, oggi mucche. Poi le pecore dall'Alpago con i loro agnellini, nati nella nostra terra. I maiali neri, le galline, i capponi, i galli. E due gatti.</p>
         <p class="farm__hint hand">continua a scorrere →</p>
       </article>
+
+      <figure class="drawing" data-cursor="Guarda">
+        <span class="tape"></span>
+        <img src="assets/img/disegno-fattoria.webp" alt="Disegno della fattoria del Bettone: la casa in pietra con mucche, cavalli, maiali, galline e gatti" loading="lazy">
+        <figcaption class="hand">la nostra fattoria, disegnata</figcaption>
+      </figure>
 
       <!-- Mucche -->
       <article class="card card--sun" data-cursor="Muu!">
@@ -496,8 +420,9 @@
     </div>
 
     <div class="snacks__media">
-      <figure class="snacks__img snacks__img--a reveal-img" data-speed="-0.6"><img src="assets/img/tagliatelle.webp" alt="Tagliatelle fatte a mano" loading="lazy"></figure>
-      <figure class="snacks__img snacks__img--b reveal-img" data-speed="0.9"><img src="assets/img/pasta.webp" alt="Le mani che impastano la sfoglia" loading="lazy"></figure>
+      <figure class="snacks__img snacks__img--a reveal-img" data-speed="-0.6" data-cursor="Guarda"><img src="assets/img/disegno-bistrot.webp" alt="Disegno della vecchia chiesa della Villa, oggi area Spuntini, sotto un cielo viola" loading="lazy"></figure>
+      <figure class="snacks__img snacks__img--b reveal-img" data-speed="0.9"><img src="assets/img/alloggio-12.webp" alt="L'edificio in pietra dell'area Spuntini con i tavoli all'aperto" loading="lazy"></figure>
+      <figure class="snacks__img snacks__img--c reveal-img" data-speed="-1"><img src="assets/img/tagliatelle.webp" alt="Tagliatelle fatte a mano" loading="lazy"></figure>
 
       <div class="badge" aria-hidden="true">
         <svg viewBox="0 0 200 200"><defs><path id="badgeCircle" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
@@ -521,13 +446,13 @@
 <!-- ============ ALLOGGIO (zoom gallery) ============ -->
 <section class="zoom" id="alloggio" data-theme="cream" aria-label="Alloggio">
   <div class="zoom__sticky">
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/villa.webp" alt="La villa del Settecento"></div></div>
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/camera.webp" alt="Una camera della villa" loading="lazy"></div></div>
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/villa-alto.webp" alt="La villa vista dall'alto, immersa nel verde" loading="lazy"></div></div>
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/cucina.webp" alt="La cucina con i muri in pietra" loading="lazy"></div></div>
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/yurta.webp" alt="La yurta nel bosco" loading="lazy"></div></div>
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/poltrone.webp" alt="Poltrone blu davanti al muro in pietra" loading="lazy"></div></div>
-    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/vigneti.webp" alt="I vigneti dei Colli Euganei" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-11.webp" alt="La villa del Settecento con la scalinata e il loggiato ad archi"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-05.webp" alt="Una camera con i letti in legno antico" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-08.webp" alt="Una stanza luminosa con la cassapanca antica" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-13.webp" alt="La cucina con i muri in pietra" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-01.webp" alt="La lampada arancione accanto alla finestra" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-14.webp" alt="Il soggiorno con il pianoforte e la scala" loading="lazy"></div></div>
+    <div class="zoom__el"><div class="zoom__img"><img src="assets/img/alloggio-03.webp" alt="Il bagno con la finestra sul giardino" loading="lazy"></div></div>
     <div class="zoom__over">
       <p class="eyebrow eyebrow--light"><span class="dot"></span>03 — Alloggio</p>
       <h2 class="zoom__title">Una villa<br><em class="hand">del '700</em></h2>
@@ -544,8 +469,8 @@
     </div>
   </div>
   <div class="stay__grid">
-    <figure class="stay__ph stay__ph--1" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/camera.webp" alt="Una camera calda e accogliente" loading="lazy"></div><figcaption><span>01</span> Le camere</figcaption></figure>
-    <figure class="stay__ph stay__ph--2" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/bagno.webp" alt="Il bagno con il pavimento in legno" loading="lazy"></div><figcaption><span>02</span> Il bagno</figcaption></figure>
+    <figure class="stay__ph stay__ph--1" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/alloggio-06.webp" alt="Una camera con il letto in legno" loading="lazy"></div><figcaption><span>01</span> Le camere</figcaption></figure>
+    <figure class="stay__ph stay__ph--2" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/alloggio-04.webp" alt="Il bagno con i muri in pietra" loading="lazy"></div><figcaption><span>02</span> Il bagno</figcaption></figure>
     <figure class="stay__ph stay__ph--3" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/yoga.webp" alt="Il prato della villa" loading="lazy"></div><figcaption><span>03</span> Il prato della villa</figcaption></figure>
     <figure class="stay__ph stay__ph--4" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/yurta-int.webp" alt="L'interno della yurta" loading="lazy"></div><figcaption><span>04</span> La yurta</figcaption></figure>
     <figure class="stay__ph stay__ph--5" data-cursor="Guarda"><div class="stay__in"><img src="assets/img/panorama.webp" alt="Panorama sui Colli Euganei" loading="lazy"></div><figcaption><span>05</span> La vista</figcaption></figure>

@@ -112,14 +112,13 @@
   const loader = $(".loader");
   function intro() {
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    tl.from(".hero__far, .hero__mid", { yPercent: 30, duration: 1.6, stagger: 0.08 }, 0)
-      .from(".hero__near, .hero__front", { yPercent: 40, duration: 1.6, stagger: 0.08 }, 0.05)
-      .from(".sun", { scale: 0, rotate: -90, transformOrigin: "50% 50%", duration: 1.4, ease: "back.out(1.8)" }, 0.3)
-      .from(".cloud", { opacity: 0, x: -80, duration: 1.4, stagger: 0.1 }, 0.3)
+    tl.fromTo(".hero__media", { scale: 1.25 }, { scale: 1, duration: 2.2, ease: "power3.out" }, 0)
+      .from(".hero__ground", { yPercent: 100, duration: 1.4 }, 0.2)
+      .from(".hero__deco > *", { y: 80, opacity: 0, rotate: -15, duration: 1.1, ease: "back.out(2)", stagger: 0.08 }, 0.6)
       .from(".hl", { yPercent: -160, rotate: () => gsap.utils.random(-25, 25), opacity: 0, duration: 1.2, ease: "bounce.out", stagger: 0.06 }, 0.35)
       .from(".hero__kicker span", { y: 30, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.9)
       .from(".hero__place", { scale: 0, rotate: -10, duration: 0.8, ease: "back.out(2.5)" }, 1.1)
-      .fromTo(".header", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 1, clearProps: "transform" }, 1)
+      .from(".header > *", { y: -30, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.8)
       .from(".hero__scroll", { opacity: 0, y: 20, duration: 0.8 }, 1.4);
     return tl;
   }
@@ -205,8 +204,13 @@
     start: 0, end: "max",
     onUpdate: (self) => {
       gsap.set(".progress i", { scaleX: self.progress });
-      header.classList.toggle("is-hidden", self.direction === 1 && self.scroll() > window.innerHeight * 0.6 && !body.classList.contains("menu-open"));
+      header.classList.toggle("is-scrolled", self.scroll() > 40);
     },
+  });
+  // sopra il video l'header è chiaro
+  ScrollTrigger.create({
+    trigger: ".hero", start: "top bottom", end: "bottom 80px",
+    onToggle: (self) => { header.classList.toggle("on-video", self.isActive); cursor.classList.toggle("on-dark", self.isActive); },
   });
 
   /* ---------------- MENU ---------------- */
@@ -267,33 +271,22 @@
 
   // da qui solo movimento
 
-  /* ---------------- HERO: parallasse + finestra video ---------------- */
-  const video = $(".hero__video");
+  /* ---------------- HERO: video a tutto schermo ---------------- */
   const heroTl = gsap.timeline({
     defaults: { ease: "none" },
-    scrollTrigger: {
-      trigger: ".hero", start: "top top", end: "bottom bottom", scrub: 1,
-      onUpdate: (self) => {
-        header.classList.toggle("on-dark", self.progress > 0.45 && self.progress < 0.995);
-        cursor.classList.toggle("on-dark", self.progress > 0.45 && self.progress < 0.995);
-        if (self.progress > 0.2 && video.paused) video.play().catch(() => {});
-        if (self.progress <= 0.2 && !video.paused) video.pause();
-      },
-    },
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
   });
   heroTl
-    .to(".hero__sky", { yPercent: 12 }, 0)
-    .to(".hero__far", { yPercent: 6, scale: 1.08, transformOrigin: "50% 100%" }, 0)
-    .to(".hero__mid", { yPercent: 14, scale: 1.25, transformOrigin: "50% 100%" }, 0)
-    .to(".hero__title-wrap", { yPercent: -38, scale: 0.8, opacity: 0, duration: 0.45 }, 0)
-    .to(".hero__near", { yPercent: 28, scale: 1.5, transformOrigin: "30% 100%" }, 0)
-    .to(".hero__front", { yPercent: 45, scale: 2.2, transformOrigin: "50% 100%" }, 0)
-    .to(".hero__scroll", { opacity: 0, duration: 0.1 }, 0)
-    .fromTo(".hero__window", { "--wy": "46%", "--wx": "44%", "--wr": "40px", opacity: 0 }, { opacity: 1, duration: 0.06 }, 0.22)
-    .to(".hero__window", { "--wy": "0%", "--wx": "0%", "--wr": "0px", duration: 0.5, ease: "power2.inOut" }, 0.24)
-    .fromTo(".hero__video", { scale: 1.6 }, { scale: 1, duration: 0.6 }, 0.22)
-    .fromTo(".hero__caption", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.15 }, 0.72)
-    .to({}, { duration: 0.12 });
+    .to(".hero__video", { yPercent: 18, scale: 1.08 }, 0)
+    .to(".hero__content", { yPercent: -45, opacity: 0 }, 0)
+    .to(".hero__scroll", { opacity: 0, duration: 0.2 }, 0)
+    .to(".hero__deco", { yPercent: -30 }, 0);
+
+  const video = $(".hero__video");
+  ScrollTrigger.create({
+    trigger: ".hero", start: "top bottom", end: "bottom top",
+    onToggle: (self) => (self.isActive ? video.play().catch(() => {}) : video.pause()),
+  });
 
   /* ---------------- TITOLI A LETTERE ---------------- */
   $$(".js-chars").forEach((el) => {
